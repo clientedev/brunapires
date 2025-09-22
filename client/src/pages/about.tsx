@@ -1,4 +1,4 @@
-import bpcCircularLogo from "@assets/image_1758563943976.png";
+import bpcCircularLogo from "@assets/image_1758569899954.png";
 
 export default function About() {
   return (

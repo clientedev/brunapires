@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import bpcLogo from "@assets/image_1758563953659.png";
+import bpcLogo from "@assets/image_1758569920171.png";
 
 export default function Footer() {
   return (

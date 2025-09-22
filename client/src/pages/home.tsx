@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Shield, CheckCircle, Users, TrendingUp, Award, Phone, MessageCircle } from "lucide-react";
-import bpcCircularLogo from "@assets/image_1758563943976.png";
+import bpcCircularLogo from "@assets/image_1758569899954.png";
 
 export default function Home() {
   return (
@@ -31,10 +31,26 @@ export default function Home() {
               Seu futuro e saúde planejados com cuidado
             </p>
             
-            <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto" data-testid="text-hero-description">
-              Desde 2018 oferecemos consultoria especializada com transparência e comprometimento. 
-              Encontramos as melhores soluções do mercado para proteger você e sua família.
+            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed" data-testid="text-hero-description">
+              Desde 2018 oferecemos consultoria especializada com <strong className="text-foreground">transparência e comprometimento</strong>. Somos especialistas em planos de saúde e oferecemos seguros de vida como proteção complementar.
             </p>
+            
+            <div className="bg-background/80 backdrop-blur border border-primary/20 rounded-2xl p-6 max-w-2xl mx-auto mb-12">
+              <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <span>Consultoria 100% Gratuita</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <span>Sem Compromisso</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <span>Total Transparência</span>
+                </div>
+              </div>
+            </div>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
               <Link href="/contato">
@@ -86,9 +102,24 @@ export default function Home() {
             <div className="order-2 lg:order-1" data-testid="section-planos-saude">
               <div className="bg-primary/5 rounded-2xl p-8">
                 <h3 className="text-3xl font-display font-bold text-foreground mb-6">Planos de Saúde</h3>
-                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  Nossa especialidade principal. Analisamos seu perfil, comparamos operadoras e encontramos o plano ideal para você, sua família ou empresa, sempre com transparência total sobre coberturas, carências e custos.
+                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                  Nossa especialidade principal desde 2018. Somos experts em analisar seu perfil médico, comparar todas as operadoras do mercado e encontrar o plano ideal com o melhor custo-benefício.
                 </p>
+                
+                <div className="bg-primary/5 rounded-xl p-4 mb-6">
+                  <h4 className="font-semibold text-foreground mb-2 flex items-center">
+                    <Heart className="w-4 h-4 mr-2 text-primary" />
+                    Principais Operadoras que Trabalhamos
+                  </h4>
+                  <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground">
+                    <span>• Unimed</span>
+                    <span>• SulAmérica</span>
+                    <span>• Bradesco Saúde</span>
+                    <span>• NotreDame Intermédica</span>
+                    <span>• Hapvida</span>
+                    <span>• E muitas outras</span>
+                  </div>
+                </div>
                 
                 <div className="space-y-4 mb-8">
                   <div className="flex items-start">
@@ -148,9 +179,30 @@ export default function Home() {
             <div data-testid="section-seguro-vida">
               <div className="bg-background rounded-2xl p-8 border border-border">
                 <h3 className="text-3xl font-display font-bold text-foreground mb-6">Seguro de Vida</h3>
-                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  Complemento estratégico ao seu plano de saúde. Oferecemos as melhores opções em seguros de vida para garantir proteção financeira completa para sua família.
+                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                  Serviço complementar que oferecemos para garantir proteção financeira completa. Enquanto o plano de saúde cuida da sua saúde, o seguro de vida protege financeiramente sua família.
                 </p>
+                
+                <div className="bg-background/50 rounded-xl p-4 mb-6 border border-border/50">
+                  <h4 className="font-semibold text-foreground mb-2 flex items-center">
+                    <Shield className="w-4 h-4 mr-2 text-primary" />
+                    Modalidades de Seguro Disponíveis
+                  </h4>
+                  <div className="grid grid-cols-1 gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center">
+                      <div className="w-1.5 h-1.5 bg-primary/60 rounded-full mr-2"></div>
+                      <span><strong>Individual:</strong> Proteção pessoal básica e invalidez</span>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-1.5 h-1.5 bg-primary/60 rounded-full mr-2"></div>
+                      <span><strong>Familiar:</strong> Cobertura estendida com auxílio educação</span>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-1.5 h-1.5 bg-primary/60 rounded-full mr-2"></div>
+                      <span><strong>Empresarial:</strong> Benefícios corporativos para equipes</span>
+                    </div>
+                  </div>
+                </div>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                   <div className="text-center">
@@ -179,63 +231,154 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-stats-title">
-              Números que Falam por Si
+            <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-6" data-testid="text-stats-title">
+              Por que Escolher a BPC?
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-stats-description">
-              Nossa trajetória de sucesso construída com dedicação e comprometimento
+            <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-stats-description">
+              Nossa trajetória de sucesso construída com dedicação, expertise e comprometimento real com cada cliente
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center" data-testid="stat-experiencia">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="w-10 h-10 text-primary" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-background/80 backdrop-blur border border-primary/20 rounded-2xl p-8 text-center shadow-lg" data-testid="stat-experiencia">
+              <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <TrendingUp className="w-10 h-10 text-primary-foreground" />
               </div>
-              <div className="text-4xl font-bold text-primary mb-2">7+</div>
-              <div className="text-muted-foreground">Anos de experiência</div>
+              <div className="text-5xl font-display font-bold text-primary mb-3">7+</div>
+              <div className="text-lg font-medium text-foreground mb-2">Anos de Experiência</div>
+              <div className="text-muted-foreground text-sm">Especialização contínua no mercado de planos de saúde</div>
             </div>
-            <div className="text-center" data-testid="stat-clientes">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-10 h-10 text-primary" />
+            <div className="bg-background/80 backdrop-blur border border-primary/20 rounded-2xl p-8 text-center shadow-lg" data-testid="stat-clientes">
+              <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Users className="w-10 h-10 text-primary-foreground" />
               </div>
-              <div className="text-4xl font-bold text-primary mb-2">500+</div>
-              <div className="text-muted-foreground">Clientes atendidos</div>
+              <div className="text-5xl font-display font-bold text-primary mb-3">500+</div>
+              <div className="text-lg font-medium text-foreground mb-2">Clientes Atendidos</div>
+              <div className="text-muted-foreground text-sm">Famílias e empresas com proteção personalizada</div>
             </div>
-            <div className="text-center" data-testid="stat-satisfacao">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-10 h-10 text-primary" />
+            <div className="bg-background/80 backdrop-blur border border-primary/20 rounded-2xl p-8 text-center shadow-lg" data-testid="stat-satisfacao">
+              <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Award className="w-10 h-10 text-primary-foreground" />
               </div>
-              <div className="text-4xl font-bold text-primary mb-2">98%</div>
-              <div className="text-muted-foreground">Satisfação</div>
+              <div className="text-5xl font-display font-bold text-primary mb-3">98%</div>
+              <div className="text-lg font-medium text-foreground mb-2">Índice de Satisfação</div>
+              <div className="text-muted-foreground text-sm">Clientes que recomendam nossos serviços</div>
+            </div>
+          </div>
+
+          {/* Exclusive Benefits */}
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-display font-bold text-foreground mb-4">Benefícios Exclusivos BPC</h3>
+              <p className="text-lg text-muted-foreground">O que você só encontra aqui</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-primary/5 rounded-xl p-6 border border-primary/20">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <CheckCircle className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">Análise Médica Personalizada</h4>
+                    <p className="text-sm text-muted-foreground">Avaliamos seu histórico médico para encontrar operadoras que melhor atendem suas necessidades específicas</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-primary/5 rounded-xl p-6 border border-primary/20">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <Heart className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">Acompanhamento Vitalício</h4>
+                    <p className="text-sm text-muted-foreground">Suporte contínuo mesmo após a contratação: reajustes, mudanças, dúvidas e renovações</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-primary/5 rounded-xl p-6 border border-primary/20">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <Users className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">Consultoria Familiar Completa</h4>
+                    <p className="text-sm text-muted-foreground">Analisamos toda a família para encontrar a melhor estratégia de proteção com economia escalonada</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-primary/5 rounded-xl p-6 border border-primary/20">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">Comparativo Transparente</h4>
+                    <p className="text-sm text-muted-foreground">Relatório detalhado comparando todas as opções com prós, contras e recomendação justificada</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-6" data-testid="text-cta-title">
-            Pronto para Proteger Seu Futuro?
-          </h2>
-          <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto" data-testid="text-cta-description">
-            Entre em contato conosco hoje mesmo e descubra como podemos ajudar você a encontrar a proteção ideal para você e sua família.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contato">
-              <Button variant="secondary" size="lg" className="px-8 py-4 font-semibold" data-testid="button-contato-agora">
-                Entre em Contato Agora
-              </Button>
-            </Link>
-            <Link href="/planos-saude">
-              <Button variant="outline" size="lg" className="px-8 py-4 font-semibold bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" data-testid="button-ver-planos">
-                Ver Planos Disponíveis
-              </Button>
-            </Link>
+      <section className="py-24 bg-gradient-to-br from-primary via-primary to-primary/90 relative overflow-hidden">
+        <div className="absolute inset-0 bg-primary/5"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-foreground/10 backdrop-blur rounded-full mb-6">
+              <Heart className="w-8 h-8 text-primary-foreground" />
+            </div>
+            
+            <h2 className="text-4xl sm:text-5xl font-display font-bold text-primary-foreground mb-6" data-testid="text-cta-title">
+              Pronto para Proteger<br />
+              <span className="bg-gradient-to-r from-primary-foreground to-primary-foreground/80 bg-clip-text text-transparent">Seu Futuro?</span>
+            </h2>
+            <div className="w-24 h-1 bg-primary-foreground/40 mx-auto mb-8"></div>
+            
+            <p className="text-xl text-primary-foreground/90 mb-12 max-w-3xl mx-auto leading-relaxed" data-testid="text-cta-description">
+              Converse com nossos especialistas hoje mesmo. Oferecemos consultoria 100% gratuita para encontrar a proteção ideal para você e sua família, com total transparência e sem compromisso.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+              <Link href="/contato">
+                <Button variant="secondary" size="lg" className="px-12 py-4 text-lg font-semibold shadow-2xl hover:scale-105 transition-all duration-300" data-testid="button-contato-agora">
+                  <MessageCircle className="mr-3 h-5 w-5" />
+                  Consultoria Gratuita Agora
+                </Button>
+              </Link>
+              <Link href="/planos-saude">
+                <Button variant="outline" size="lg" className="px-12 py-4 text-lg font-semibold bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all duration-300" data-testid="button-ver-planos">
+                  <Phone className="mr-3 h-5 w-5" />
+                  Ver Planos Disponíveis
+                </Button>
+              </Link>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
+              <div className="bg-primary-foreground/10 backdrop-blur rounded-xl p-4 border border-primary-foreground/20">
+                <div className="text-primary-foreground font-semibold mb-1">✓ Consultoria Gratuita</div>
+                <div className="text-primary-foreground/70 text-sm">Análise sem nenhum custo</div>
+              </div>
+              <div className="bg-primary-foreground/10 backdrop-blur rounded-xl p-4 border border-primary-foreground/20">
+                <div className="text-primary-foreground font-semibold mb-1">✓ Sem Compromisso</div>
+                <div className="text-primary-foreground/70 text-sm">Você decide quando contratar</div>
+              </div>
+              <div className="bg-primary-foreground/10 backdrop-blur rounded-xl p-4 border border-primary-foreground/20">
+                <div className="text-primary-foreground font-semibold mb-1">✓ Total Transparência</div>
+                <div className="text-primary-foreground/70 text-sm">Explicamos tudo claramente</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
