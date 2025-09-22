@@ -7,273 +7,268 @@ export default function LifeInsurance() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-background to-muted">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6" data-testid="text-life-insurance-title">
-                Seguro de Vida
-              </h1>
-              <p className="text-xl text-muted-foreground mb-6" data-testid="text-life-insurance-description">
-                Complemento essencial ao seu plano de saúde, o seguro de vida oferece proteção financeira completa para você e sua família em momentos difíceis.
-              </p>
-              <p className="text-lg text-muted-foreground mb-8" data-testid="text-life-insurance-subtitle">
-                Com coberturas personalizáveis e valores acessíveis, garantimos que sua família tenha segurança financeira quando mais precisar.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contato">
-                  <Button className="bg-primary text-primary-foreground px-8 py-4 font-semibold hover:bg-primary/90 transition-colors shadow-lg" data-testid="button-saiba-mais-seguro">
-                    Saiba mais sobre proteção
-                  </Button>
-                </Link>
-                <Link href="/contato">
-                  <Button variant="outline" className="px-8 py-4 font-semibold" data-testid="button-cotacao-seguro">
-                    Solicitar cotação
-                  </Button>
-                </Link>
-              </div>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="text-6xl mb-8">🛡️</div>
+            <h1 className="text-5xl sm:text-6xl font-display font-bold text-foreground mb-8" data-testid="text-life-insurance-title">
+              Seguro de Vida
+            </h1>
+            <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
+            <p className="text-2xl font-display font-medium text-foreground mb-6" data-testid="text-life-insurance-subtitle">
+              Proteção Financeira Complementar
+            </p>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed" data-testid="text-life-insurance-description">
+              Complemento estratégico ao seu plano de saúde. Oferecemos as melhores opções em seguros de vida para garantir proteção financeira completa para sua família, com nossa consultoria especializada e transparência total.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+              <Link href="/contato">
+                <Button size="lg" className="px-12 py-4 text-lg font-semibold shadow-xl" data-testid="button-saiba-mais-seguro">
+                  Consultoria em Proteção Financeira
+                </Button>
+              </Link>
+              <Link href="/planos-saude">
+                <Button variant="outline" size="lg" className="px-12 py-4 text-lg font-semibold border-2" data-testid="button-planos-principais">
+                  Ver Planos de Saúde (Principal)
+                </Button>
+              </Link>
             </div>
-            <div>
-              <img 
-                src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                alt="Happy family representing financial security and protection" 
-                className="rounded-xl shadow-xl w-full h-auto"
-                data-testid="img-family-protection"
-              />
+            
+            <div className="text-center text-sm text-muted-foreground">
+              💡 <strong>Dica:</strong> Nosso foco principal são os planos de saúde. O seguro de vida é um serviço complementar que oferecemos.
             </div>
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 bg-background">
+      {/* Why Life Insurance Section */}
+      <section className="py-24 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-benefits-life-title">
-              Por que ter um Seguro de Vida?
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-benefits-life-description">
-              Proteção completa para você e sua família em todas as situações
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="text-center" data-testid="benefit-protecao-financeira">
-              <div className="w-20 h-20 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-6">
-                <DollarSign className="w-10 h-10 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-4">Proteção Financeira</h3>
-              <p className="text-muted-foreground">
-                Garante estabilidade financeira para seus beneficiários, cobrindo despesas e mantendo o padrão de vida da família.
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-8" data-testid="text-benefits-life-title">
+                O Seguro Ideal para Cada Situação
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-benefits-life-description">
+                Plano de saúde cuida da sua saúde, seguro de vida protege financeiramente sua família. Juntos, oferecem proteção completa.
               </p>
             </div>
 
-            <div className="text-center" data-testid="benefit-coberturas-amplas">
-              <div className="w-20 h-20 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-6">
-                <Heart className="w-10 h-10 text-primary" />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+              <div className="bg-background rounded-2xl p-8 shadow-lg" data-testid="benefit-protecao-financeira">
+                <div className="text-4xl mb-6">💰</div>
+                <h3 className="text-2xl font-display font-bold text-foreground mb-6">Segurança Financeira Familiar</h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Enquanto o plano de saúde cuida dos custos médicos, o seguro de vida garante que sua família mantenha o padrão de vida mesmo em sua ausência. É a proteção financeira que complementa perfeitamente a proteção de saúde.
+                </p>
+                <div className="space-y-3">
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                    <span className="text-sm">Manutenção do padrão de vida familiar</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                    <span className="text-sm">Pagamento de dívidas e financiamentos</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                    <span className="text-sm">Educação dos filhos garantida</span>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-4">Coberturas Amplas</h3>
-              <p className="text-muted-foreground">
-                Morte natural, acidental, invalidez permanente e outras coberturas que podem ser personalizadas conforme sua necessidade.
-              </p>
-            </div>
-
-            <div className="text-center" data-testid="benefit-flexibilidade">
-              <div className="w-20 h-20 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-10 h-10 text-primary" />
+              
+              <div className="text-center">
+                <div className="text-6xl mb-6">🛡️</div>
+                <h4 className="text-2xl font-display font-semibold text-foreground mb-4">Proteção Dupla</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  <strong>Plano de Saúde:</strong> Cuida da sua saúde<br/>
+                  <strong>Seguro de Vida:</strong> Protege financeiramente sua família
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-4">Flexibilidade</h3>
-              <p className="text-muted-foreground">
-                Coberturas e valores ajustáveis às suas necessidades e orçamento, permitindo personalização completa da proteção.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Coverage Types */}
-      <section className="py-20 bg-muted">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-coverage-types-title">
-              Tipos de Cobertura
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-coverage-types-description">
-              Escolha as coberturas que melhor atendem às suas necessidades
-            </p>
-          </div>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-8" data-testid="text-coverage-types-title">
+                Modalidades Disponíveis
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-coverage-types-description">
+                Oferecemos consultoria especializada para encontrar o seguro de vida mais adequado para cada situação
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-shadow" data-testid="card-cobertura-individual">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                  <Users className="w-8 h-8 text-primary" />
+            <div className="space-y-12">
+              {/* Individual Coverage */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" data-testid="section-cobertura-individual">
+                <div>
+                  <div className="bg-primary/5 rounded-2xl p-8">
+                    <div className="text-4xl mb-6">👤</div>
+                    <h3 className="text-3xl font-display font-bold text-foreground mb-6">Proteção Individual</h3>
+                    <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                      Ideal para profissionais autônomos, solteiros ou quem deseja proteção pessoal específica. 
+                      Coberturas essenciais com valores personalizados conforme seu perfil.
+                    </p>
+                    <div className="grid grid-cols-2 gap-4 mb-8">
+                      <div>
+                        <div className="text-2xl font-bold text-primary mb-1">Básico</div>
+                        <div className="text-sm text-muted-foreground">Morte natural/acidental</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-primary mb-1">Invalidez</div>
+                        <div className="text-sm text-muted-foreground">Proteção permanente</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-primary mb-1">Auxílios</div>
+                        <div className="text-sm text-muted-foreground">Funeral e assistência</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-primary mb-1">24h</div>
+                        <div className="text-sm text-muted-foreground">Assistência completa</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-4">Proteção Individual</h3>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-primary mr-2" />
-                    Morte natural e acidental
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-primary mr-2" />
-                    Invalidez permanente
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-primary mr-2" />
-                    Auxílio funeral
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-primary mr-2" />
-                    Assistência 24h
-                  </li>
-                </ul>
-                <p className="text-muted-foreground text-sm">
-                  Ideal para proteção pessoal com foco na segurança individual.
-                </p>
-              </CardContent>
-            </Card>
+                <div className="text-center">
+                  <h4 className="text-2xl font-display font-semibold text-foreground mb-4">Foco na Proteção Pessoal</h4>
+                  <p className="text-muted-foreground">Segurança financeira individual com coberturas essenciais</p>
+                </div>
+              </div>
 
-            <Card className="hover:shadow-lg transition-shadow" data-testid="card-cobertura-familiar">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                  <Heart className="w-8 h-8 text-primary" />
+              {/* Family Coverage - Most Popular */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-muted rounded-3xl p-8" data-testid="section-cobertura-familiar">
+                <div className="text-center">
+                  <div className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold mb-4">Mais Procurado</div>
+                  <div className="text-4xl mb-6">👨‍👩‍👧‍👦</div>
+                  <h4 className="text-2xl font-display font-semibold text-foreground mb-4">Proteção Familiar Completa</h4>
+                  <p className="text-muted-foreground">A escolha ideal para quem tem família e responsabilidades financeiras</p>
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-4">Proteção Familiar</h3>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-primary mr-2" />
-                    Cobertura para cônjuge
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-primary mr-2" />
-                    Proteção para filhos
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-primary mr-2" />
-                    Auxílio educação
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-primary mr-2" />
-                    Cesta básica
-                  </li>
-                </ul>
-                <p className="text-muted-foreground text-sm">
-                  Proteção completa para toda família com benefícios especiais.
-                </p>
-              </CardContent>
-            </Card>
+                <div>
+                  <div className="bg-background rounded-2xl p-8 shadow-lg">
+                    <h3 className="text-3xl font-display font-bold text-foreground mb-6">Proteção Familiar</h3>
+                    <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                      A modalidade mais procurada! Cobertura estendida para cônjuge e filhos, incluindo auxílios específicos 
+                      como educação e cesta básica para garantir o bem-estar familiar.
+                    </p>
+                    <div className="space-y-4 mb-8">
+                      <div className="flex items-start">
+                        <div className="w-2 h-2 bg-primary rounded-full mt-3 mr-4"></div>
+                        <div>
+                          <h4 className="font-semibold text-foreground">Cobertura Estendida</h4>
+                          <p className="text-muted-foreground text-sm">Proteção para titular, cônjuge e filhos</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <div className="w-2 h-2 bg-primary rounded-full mt-3 mr-4"></div>
+                        <div>
+                          <h4 className="font-semibold text-foreground">Auxílio Educação</h4>
+                          <p className="text-muted-foreground text-sm">Garantia de continuidade dos estudos dos filhos</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <div className="w-2 h-2 bg-primary rounded-full mt-3 mr-4"></div>
+                        <div>
+                          <h4 className="font-semibold text-foreground">Benefícios Extras</h4>
+                          <p className="text-muted-foreground text-sm">Cesta básica e outros auxílios familiares</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <Card className="hover:shadow-lg transition-shadow" data-testid="card-cobertura-empresarial">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                  <Briefcase className="w-8 h-8 text-primary" />
+              {/* Corporate Coverage */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" data-testid="section-cobertura-empresarial">
+                <div>
+                  <div className="bg-background rounded-2xl p-8 border border-border">
+                    <div className="text-4xl mb-6">🏢</div>
+                    <h3 className="text-3xl font-display font-bold text-foreground mb-6">Proteção Empresarial</h3>
+                    <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                      Soluções corporativas para empresas que desejam oferecer proteção adicional aos colaboradores. 
+                      Complementa o plano de saúde empresarial com segurança financeira.
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary mb-1">Equipe</div>
+                        <div className="text-sm text-muted-foreground">Toda a equipe protegida</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary mb-1">Gestão</div>
+                        <div className="text-sm text-muted-foreground">Administração simplificada</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary mb-1">Relatórios</div>
+                        <div className="text-sm text-muted-foreground">Controle detalhado</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary mb-1">Benefícios</div>
+                        <div className="text-sm text-muted-foreground">Extras corporativos</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-4">Proteção Empresarial</h3>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-primary mr-2" />
-                    Proteção para funcionários
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-primary mr-2" />
-                    Gestão simplificada
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-primary mr-2" />
-                    Benefícios adicionais
-                  </li>
-                  <li className="flex items-center text-sm">
-                    <CheckCircle className="w-4 h-4 text-primary mr-2" />
-                    Relatórios detalhados
-                  </li>
-                </ul>
-                <p className="text-muted-foreground text-sm">
-                  Solução corporativa para proteger sua equipe de trabalho.
-                </p>
-              </CardContent>
-            </Card>
+                <div className="text-center">
+                  <h4 className="text-2xl font-display font-semibold text-foreground mb-4">Benefício Corporativo</h4>
+                  <p className="text-muted-foreground">Proteção adicional que complementa o pacote de benefícios da empresa</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Why Choose Section */}
-      <section className="py-20 bg-background">
+      <section className="py-24 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-why-choose-title">
-                Por que escolher a BPC para seu Seguro de Vida?
+              <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-8" data-testid="text-why-choose-title">
+                Nossa Consultoria em Seguros de Vida
               </h2>
-              <p className="text-xl text-muted-foreground" data-testid="text-why-choose-description">
-                Expertise e dedicação para encontrar a proteção ideal para você
+              <p className="text-xl text-muted-foreground leading-relaxed" data-testid="text-why-choose-description">
+                Embora nosso foco principal sejam os planos de saúde, oferecemos consultoria especializada em seguros de vida como serviço complementar
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-6">
-                <div className="flex items-start" data-testid="diferencial-consulta-personalizada">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 mt-1">
-                    <Shield className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Consulta Personalizada</h4>
-                    <p className="text-muted-foreground">Analisamos seu perfil e necessidades para recomendar a proteção mais adequada.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start" data-testid="diferencial-comparacao-mercado">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 mt-1">
-                    <CheckCircle className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Comparação de Mercado</h4>
-                    <p className="text-muted-foreground">Comparamos diferentes seguradoras para garantir o melhor custo-benefício.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start" data-testid="diferencial-suporte-sinistro">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 mt-1">
-                    <Heart className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Suporte em Sinistros</h4>
-                    <p className="text-muted-foreground">Acompanhamos todo o processo de sinistro, garantindo agilidade e tranquilidade.</p>
-                  </div>
-                </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              <div className="bg-background rounded-2xl p-8 shadow-lg text-center" data-testid="diferencial-consulta-personalizada">
+                <div className="text-5xl mb-6">📈</div>
+                <h4 className="text-xl font-display font-semibold text-foreground mb-4">Análise Especializada</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Avaliamos seu perfil de risco, necessidades familiares e orçamento para indicar a proteção mais adequada no mercado de seguros.
+                </p>
               </div>
 
-              <div className="space-y-6">
-                <div className="flex items-start" data-testid="diferencial-orientacao-completa">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 mt-1">
-                    <Users className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Orientação Completa</h4>
-                    <p className="text-muted-foreground">Explicamos todas as coberturas e condições de forma clara e transparente.</p>
-                  </div>
-                </div>
+              <div className="bg-background rounded-2xl p-8 shadow-lg text-center" data-testid="diferencial-comparacao-mercado">
+                <div className="text-5xl mb-6">🔍</div>
+                <h4 className="text-xl font-display font-semibold text-foreground mb-4">Comparação Transparente</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Comparamos as principais seguradoras do mercado, analisando coberturas, preços e condições para garantir a melhor escolha.
+                </p>
+              </div>
 
-                <div className="flex items-start" data-testid="diferencial-atendimento-continuo">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 mt-1">
-                    <DollarSign className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Atendimento Contínuo</h4>
-                    <p className="text-muted-foreground">Relacionamento de longo prazo com suporte sempre que você precisar.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start" data-testid="diferencial-sem-custo-adicional">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 mt-1">
-                    <Briefcase className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Sem Custo Adicional</h4>
-                    <p className="text-muted-foreground">Nossa consultoria não gera custo extra. Recebemos comissão da seguradora.</p>
-                  </div>
-                </div>
+              <div className="bg-background rounded-2xl p-8 shadow-lg text-center" data-testid="diferencial-suporte-completo">
+                <div className="text-5xl mb-6">🤝</div>
+                <h4 className="text-xl font-display font-semibold text-foreground mb-4">Suporte Integral</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Acompanhamos desde a contratação até eventuais sinistros, garantindo que você tenha todo o suporte necessário quando precisar.
+                </p>
+              </div>
+            </div>
+            
+            <div className="bg-primary/5 rounded-2xl p-8 text-center">
+              <h3 className="text-2xl font-display font-semibold text-foreground mb-4">Consultoria Sem Custos Adicionais</h3>
+              <p className="text-lg text-muted-foreground mb-6">
+                Nossa consultoria em seguros de vida não gera nenhum custo extra para você. Recebemos remuneração diretamente das seguradoras, mantendo total transparência no processo.
+              </p>
+              <div className="text-sm text-muted-foreground">
+                💡 <strong>Lembrete:</strong> Planos de saúde são nossa especialidade principal. Seguros de vida são um complemento que oferecemos.
               </div>
             </div>
           </div>
@@ -281,25 +276,32 @@ export default function LifeInsurance() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-6" data-testid="text-cta-insurance-title">
-            Proteja Sua Família Hoje Mesmo
-          </h2>
-          <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto" data-testid="text-cta-insurance-description">
-            Não deixe para amanhã a proteção que sua família precisa hoje. Entre em contato e descubra como podemos ajudar.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contato">
-              <Button variant="secondary" size="lg" className="px-8 py-4 font-semibold" data-testid="button-consultor-seguro">
-                Falar com Consultor
-              </Button>
-            </Link>
-            <Link href="/contato">
-              <Button variant="outline" size="lg" className="px-8 py-4 font-semibold bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" data-testid="button-cotacao-rapida">
-                Cotação Rápida
-              </Button>
-            </Link>
+      <section className="py-24 bg-primary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl sm:text-5xl font-display font-bold text-primary-foreground mb-8" data-testid="text-cta-insurance-title">
+              Proteção Financeira Complementar
+            </h2>
+            <div className="w-24 h-1 bg-primary-foreground/30 mx-auto mb-8"></div>
+            <p className="text-xl text-primary-foreground/90 mb-8 max-w-3xl mx-auto leading-relaxed" data-testid="text-cta-insurance-description">
+              Converse com nossos consultores sobre como um seguro de vida pode complementar seu plano de saúde, oferecendo proteção financeira completa para sua família.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
+              <Link href="/contato">
+                <Button variant="secondary" size="lg" className="px-12 py-4 text-lg font-semibold shadow-xl" data-testid="button-consultor-seguro">
+                  Consultoria em Proteção
+                </Button>
+              </Link>
+              <Link href="/planos-saude">
+                <Button variant="outline" size="lg" className="px-12 py-4 text-lg font-semibold bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" data-testid="button-planos-principais">
+                  Ver Planos de Saúde (Principal)
+                </Button>
+              </Link>
+            </div>
+            <div className="text-primary-foreground/70 text-sm">
+              <div className="mb-2">ℹ️ <strong>Nosso foco principal:</strong> Planos de Saúde</div>
+              <div><strong>Serviço complementar:</strong> Seguros de Vida</div>
+            </div>
           </div>
         </div>
       </section>

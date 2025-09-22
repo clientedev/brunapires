@@ -8,202 +8,233 @@ export default function HealthPlans() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-background to-muted">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6" data-testid="text-health-plans-title">
-            Planos de Saúde
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8" data-testid="text-health-plans-description">
-            Encontre o plano ideal para suas necessidades com nossa consultoria especializada. Comparamos opções e garantimos transparência em todas as etapas.
-          </p>
-          <Link href="/contato">
-            <Button size="lg" className="px-8 py-4" data-testid="button-consultoria-especializada">
-              Fale com um consultor especializado
-            </Button>
-          </Link>
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-5xl sm:text-6xl font-display font-bold text-foreground mb-8" data-testid="text-health-plans-title">
+              Planos de Saúde
+            </h1>
+            <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
+            <p className="text-2xl font-display font-medium text-foreground mb-6" data-testid="text-health-plans-subtitle">
+              Nossa Especialidade Principal
+            </p>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed" data-testid="text-health-plans-description">
+              Com mais de 7 anos de experiência, analisamos seu perfil, comparamos todas as operadoras do mercado e encontramos a solução ideal para você, sua família ou empresa. Transparência total em cada etapa do processo.
+            </p>
+            <Link href="/contato">
+              <Button size="lg" className="px-12 py-4 text-lg font-semibold shadow-xl" data-testid="button-consultoria-especializada">
+                Falar com Especialista Agora
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-background">
+      <section className="py-24 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-benefits-title">
-              Por que escolher nossa consultoria?
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-benefits-description">
-              Nossa consultoria traz segurança, economia e clareza nas escolhas dos planos de saúde
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="text-center" data-testid="benefit-economia">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-10 h-10 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-4">Economia Garantida</h3>
-              <p className="text-muted-foreground">
-                Encontramos as melhores condições do mercado, garantindo economia sem abrir mão da qualidade.
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-8" data-testid="text-benefits-title">
+                Nossa Metodologia Especializada
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-benefits-description">
+                Processo estruturado que garante a melhor escolha em planos de saúde com total transparência e acompanhamento personalizado
               </p>
             </div>
 
-            <div className="text-center" data-testid="benefit-transparencia">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-10 h-10 text-primary" />
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+              <div className="bg-background rounded-2xl p-8 shadow-lg" data-testid="benefit-economia">
+                <div className="mb-6">
+                  <div className="text-6xl font-display font-bold text-primary mb-2">1</div>
+                  <h3 className="text-2xl font-display font-bold text-foreground mb-4">Análise Personalizada</h3>
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  Avaliamos seu perfil médico, necessidades familiares, orçamento disponível e preferências de rede credenciada para mapear exatamente o que você precisa.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-4">Transparência Total</h3>
-              <p className="text-muted-foreground">
-                Explicamos todos os detalhes, carências e coberturas para você tomar a decisão mais informada.
-              </p>
-            </div>
 
-            <div className="text-center" data-testid="benefit-acompanhamento">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-10 h-10 text-primary" />
+              <div className="bg-background rounded-2xl p-8 shadow-lg" data-testid="benefit-transparencia">
+                <div className="mb-6">
+                  <div className="text-6xl font-display font-bold text-primary mb-2">2</div>
+                  <h3 className="text-2xl font-display font-bold text-foreground mb-4">Comparação Total</h3>
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  Cotamos e comparamos todas as principais operadoras do mercado, apresentando opções claras com detalhamento completo de coberturas, carências e custos.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-4">Acompanhamento Contínuo</h3>
-              <p className="text-muted-foreground">
-                Suporte antes, durante e após a contratação. Estamos sempre aqui para ajudar.
-              </p>
+
+              <div className="bg-background rounded-2xl p-8 shadow-lg" data-testid="benefit-acompanhamento">
+                <div className="mb-6">
+                  <div className="text-6xl font-display font-bold text-primary mb-2">3</div>
+                  <h3 className="text-2xl font-display font-bold text-foreground mb-4">Suporte Integral</h3>
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  Acompanhamos todo o processo: desde a contratação até o primeiro uso, garantindo que você saiba exatamente como utilizar seu plano de saúde.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Plan Comparison Cards */}
-      <section className="py-20 bg-muted">
+      {/* Plan Types Section */}
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-plans-comparison-title">
-              Tipos de Planos Disponíveis
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-plans-comparison-description">
-              Oferecemos soluções para diferentes perfis e necessidades
-            </p>
-          </div>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-8" data-testid="text-plans-comparison-title">
+                Soluções para Cada Perfil
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-plans-comparison-description">
+                Seja qual for sua necessidade, temos a expertise para encontrar a solução ideal no mercado de planos de saúde
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <Card className="hover:shadow-lg transition-shadow" data-testid="card-plano-individual">
-              <CardContent className="p-6">
-                <div className="text-center mb-6">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <User className="w-8 h-8 text-primary" />
+            <div className="space-y-12">
+              {/* Individual Plans */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" data-testid="section-plano-individual">
+                <div className="order-2 lg:order-1">
+                  <div className="bg-primary/5 rounded-2xl p-8">
+                    <h3 className="text-3xl font-display font-bold text-foreground mb-6">Planos Individuais</h3>
+                    <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                      Perfeito para profissionais autônomos, empreendedores e pessoas que buscam cobertura personalizada. 
+                      Analisamos seu perfil de saúde e preferências para encontrar o plano com melhor custo-benefício.
+                    </p>
+                    <div className="grid grid-cols-2 gap-4 mb-8">
+                      <div>
+                        <div className="text-2xl font-bold text-primary mb-1">Flexível</div>
+                        <div className="text-sm text-muted-foreground">Coberturas adaptáveis</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-primary mb-1">Nacional</div>
+                        <div className="text-sm text-muted-foreground">Rede em todo Brasil</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-primary mb-1">Especializada</div>
+                        <div className="text-sm text-muted-foreground">Médicos especialistas</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-primary mb-1">Completa</div>
+                        <div className="text-sm text-muted-foreground">Todas as modalidades</div>
+                      </div>
+                    </div>
+                    <Link href="/contato">
+                      <Button size="lg" className="px-8 py-3 font-semibold" data-testid="button-cotacao-individual">
+                        Solicitar Consultoria Individual
+                      </Button>
+                    </Link>
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">Plano Individual</h3>
-                  <p className="text-muted-foreground">Proteção personalizada para você</p>
                 </div>
-                <ul className="space-y-3 mb-6">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-primary mr-3" />
-                    <span className="text-sm">Cobertura nacional</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-primary mr-3" />
-                    <span className="text-sm">Consultas e exames</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-primary mr-3" />
-                    <span className="text-sm">Internações</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-primary mr-3" />
-                    <span className="text-sm">Cirurgias</span>
-                  </li>
-                </ul>
-                <Link href="/contato">
-                  <Button variant="outline" className="w-full" data-testid="button-cotacao-individual">
-                    Solicitar cotação
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-primary relative hover:shadow-lg transition-shadow" data-testid="card-plano-familiar">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">Mais Popular</span>
+                <div className="order-1 lg:order-2 text-center">
+                  <div className="text-6xl mb-6">👤</div>
+                  <h4 className="text-2xl font-display font-semibold text-foreground mb-4">Proteção Individual</h4>
+                  <p className="text-muted-foreground">Cobertura personalizada para suas necessidades específicas</p>
+                </div>
               </div>
-              <CardContent className="p-6">
-                <div className="text-center mb-6">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">Plano Familiar</h3>
-                  <p className="text-muted-foreground">Proteção completa para toda família</p>
-                </div>
-                <ul className="space-y-3 mb-6">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-primary mr-3" />
-                    <span className="text-sm">Tudo do plano individual</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-primary mr-3" />
-                    <span className="text-sm">Cobertura para dependentes</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-primary mr-3" />
-                    <span className="text-sm">Pediatria especializada</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-primary mr-3" />
-                    <span className="text-sm">Desconto progressivo</span>
-                  </li>
-                </ul>
-                <Link href="/contato">
-                  <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90" data-testid="button-cotacao-familiar">
-                    Solicitar cotação
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
 
-            <Card className="hover:shadow-lg transition-shadow" data-testid="card-plano-empresarial">
-              <CardContent className="p-6">
-                <div className="text-center mb-6">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Building className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">Plano Empresarial</h3>
-                  <p className="text-muted-foreground">Solução corporativa completa</p>
+              {/* Family Plans - Most Popular */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-muted rounded-3xl p-8" data-testid="section-plano-familiar">
+                <div className="text-center">
+                  <div className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold mb-4">Mais Popular</div>
+                  <div className="text-6xl mb-6">👨‍👩‍👧‍👦</div>
+                  <h4 className="text-2xl font-display font-semibold text-foreground mb-4">Proteção Familiar</h4>
+                  <p className="text-muted-foreground">Segurança completa para toda a família com economia escalonada</p>
                 </div>
-                <ul className="space-y-3 mb-6">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-primary mr-3" />
-                    <span className="text-sm">Cobertura para equipe</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-primary mr-3" />
-                    <span className="text-sm">Gestão administrativa</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-primary mr-3" />
-                    <span className="text-sm">Relatórios mensais</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-primary mr-3" />
-                    <span className="text-sm">Preços especiais</span>
-                  </li>
-                </ul>
-                <Link href="/contato">
-                  <Button variant="outline" className="w-full" data-testid="button-cotacao-empresarial">
-                    Solicitar cotação
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
+                <div>
+                  <div className="bg-background rounded-2xl p-8 shadow-lg">
+                    <h3 className="text-3xl font-display font-bold text-foreground mb-6">Planos Familiares</h3>
+                    <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                      A opção mais procurada! Cobertura completa para titular e dependentes com descontos progressivos. 
+                      Incluímos pediatria especializada e facilitamos a gestão de múltiplos usuários.
+                    </p>
+                    <div className="space-y-4 mb-8">
+                      <div className="flex items-start">
+                        <div className="w-2 h-2 bg-primary rounded-full mt-3 mr-4"></div>
+                        <div>
+                          <h4 className="font-semibold text-foreground">Economia Escalonada</h4>
+                          <p className="text-muted-foreground text-sm">Desconto progressivo por dependente adicionado</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <div className="w-2 h-2 bg-primary rounded-full mt-3 mr-4"></div>
+                        <div>
+                          <h4 className="font-semibold text-foreground">Pediatria Especializada</h4>
+                          <p className="text-muted-foreground text-sm">Cobertura completa para crianças e adolescentes</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <div className="w-2 h-2 bg-primary rounded-full mt-3 mr-4"></div>
+                        <div>
+                          <h4 className="font-semibold text-foreground">Gestão Simplificada</h4>
+                          <p className="text-muted-foreground text-sm">Um único contrato para toda família</p>
+                        </div>
+                      </div>
+                    </div>
+                    <Link href="/contato">
+                      <Button size="lg" className="px-8 py-3 font-semibold w-full" data-testid="button-cotacao-familiar">
+                        Consultar Planos Familiares
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Corporate Plans */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" data-testid="section-plano-empresarial">
+                <div className="order-2 lg:order-1">
+                  <div className="bg-background rounded-2xl p-8 border border-border">
+                    <h3 className="text-3xl font-display font-bold text-foreground mb-6">Planos Empresariais</h3>
+                    <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                      Soluções corporativas completas para empresas de todos os tamanhos. Cuidamos de toda gestão administrativa 
+                      e oferecemos relatórios detalhados para controle total dos benefícios oferecidos.
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary mb-1">PME</div>
+                        <div className="text-sm text-muted-foreground">2-99 vidas</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary mb-1">Corporate</div>
+                        <div className="text-sm text-muted-foreground">100+ vidas</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary mb-1">Startups</div>
+                        <div className="text-sm text-muted-foreground">Soluções flexíveis</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-primary mb-1">Gestão</div>
+                        <div className="text-sm text-muted-foreground">Suporte completo</div>
+                      </div>
+                    </div>
+                    <Link href="/contato">
+                      <Button variant="outline" size="lg" className="px-8 py-3 font-semibold border-2" data-testid="button-cotacao-empresarial">
+                        Consultoria Empresarial
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+                <div className="order-1 lg:order-2 text-center">
+                  <div className="text-6xl mb-6">🏢</div>
+                  <h4 className="text-2xl font-display font-semibold text-foreground mb-4">Soluções Corporativas</h4>
+                  <p className="text-muted-foreground">Benefícios estruturados para empresas com gestão administrativa completa</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-background">
+      <section className="py-24 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-faq-title">
-                Perguntas Frequentes - Planos de Saúde
+              <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-8" data-testid="text-faq-title">
+                Dúvidas Frequentes
               </h2>
-              <p className="text-xl text-muted-foreground" data-testid="text-faq-description">
-                Esclarecemos as principais dúvidas sobre planos de saúde
+              <p className="text-xl text-muted-foreground leading-relaxed" data-testid="text-faq-description">
+                Nossa expertise em planos de saúde responde às principais questões dos nossos clientes
               </p>
             </div>
 
@@ -255,19 +286,29 @@ export default function HealthPlans() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-6" data-testid="text-cta-plans-title">
-            Pronto para Encontrar Seu Plano Ideal?
-          </h2>
-          <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto" data-testid="text-cta-plans-description">
-            Nossa equipe especializada está pronta para ajudar você a escolher o melhor plano de saúde para suas necessidades.
-          </p>
-          <Link href="/contato">
-            <Button variant="secondary" size="lg" className="px-8 py-4 font-semibold" data-testid="button-consultoria-agora">
-              Fale com um Consultor Agora
-            </Button>
-          </Link>
+      <section className="py-24 bg-primary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl sm:text-5xl font-display font-bold text-primary-foreground mb-8" data-testid="text-cta-plans-title">
+              Consultoria Gratuita e Sem Compromisso
+            </h2>
+            <div className="w-24 h-1 bg-primary-foreground/30 mx-auto mb-8"></div>
+            <p className="text-xl text-primary-foreground/90 mb-12 max-w-3xl mx-auto leading-relaxed" data-testid="text-cta-plans-description">
+              Agende uma conversa com nossos especialistas. Analisamos seu perfil, comparamos todas as opções do mercado e apresentamos as melhores alternativas para sua situação específica.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Link href="/contato">
+                <Button variant="secondary" size="lg" className="px-12 py-4 text-lg font-semibold shadow-xl" data-testid="button-consultoria-agora">
+                  Agendar Consultoria Gratuita
+                </Button>
+              </Link>
+              <div className="text-primary-foreground/70 text-sm">
+                <div className="font-semibold">✓ Sem custo</div>
+                <div className="font-semibold">✓ Sem compromisso</div>
+                <div className="font-semibold">✓ Total transparência</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
