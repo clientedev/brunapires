@@ -25,7 +25,7 @@ export default function Navigation() {
             <div className="flex items-center">
               <img 
                 src={bpcLogo} 
-                alt="BPC Consultoria Financeira & Plano de Saúde" 
+                alt="BPC Planejamento e Consultoria em Planos de Saúde" 
                 className="h-12 w-auto"
                 data-testid="img-bpc-logo"
               />

@@ -16,7 +16,7 @@ export default function LifeInsurance() {
             </h1>
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
             <p className="text-2xl font-display font-medium text-foreground mb-6" data-testid="text-life-insurance-subtitle">
-              Proteção Financeira Complementar
+              Proteção Complementar
             </p>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed" data-testid="text-life-insurance-description">
               Complemento estratégico ao seu plano de saúde. Oferecemos as melhores opções em seguros de vida para garantir proteção financeira completa para sua família, com nossa consultoria especializada e transparência total.
@@ -25,7 +25,7 @@ export default function LifeInsurance() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
               <Link href="/contato">
                 <Button size="lg" className="px-12 py-4 text-lg font-semibold shadow-xl" data-testid="button-saiba-mais-seguro">
-                  Consultoria em Proteção Financeira
+                  Consultoria em Proteção
                 </Button>
               </Link>
               <Link href="/planos-saude">
@@ -58,7 +58,7 @@ export default function LifeInsurance() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
               <div className="bg-background rounded-2xl p-8 shadow-lg" data-testid="benefit-protecao-financeira">
                 <div className="text-4xl mb-6">💰</div>
-                <h3 className="text-2xl font-display font-bold text-foreground mb-6">Segurança Financeira Familiar</h3>
+                <h3 className="text-2xl font-display font-bold text-foreground mb-6">Segurança Familiar</h3>
                 <p className="text-muted-foreground leading-relaxed mb-6">
                   Enquanto o plano de saúde cuida dos custos médicos, o seguro de vida garante que sua família mantenha o padrão de vida mesmo em sua ausência. É a proteção financeira que complementa perfeitamente a proteção de saúde.
                 </p>
@@ -280,7 +280,7 @@ export default function LifeInsurance() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl sm:text-5xl font-display font-bold text-primary-foreground mb-8" data-testid="text-cta-insurance-title">
-              Proteção Financeira Complementar
+              Proteção Complementar
             </h2>
             <div className="w-24 h-1 bg-primary-foreground/30 mx-auto mb-8"></div>
             <p className="text-xl text-primary-foreground/90 mb-8 max-w-3xl mx-auto leading-relaxed" data-testid="text-cta-insurance-description">

@@ -14,15 +14,15 @@ export default function Home() {
             <div className="flex justify-center mb-8">
               <img 
                 src={bpcCircularLogo} 
-                alt="BPC Logo" 
+                alt="BPC Planejamento e Consultoria em Planos de Saúde" 
                 className="h-24 w-24 opacity-80"
                 data-testid="img-hero-circular-logo"
               />
             </div>
             
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-foreground mb-8" data-testid="text-hero-title">
-              Consultoria Financeira<br />
-              <span className="text-primary">&amp; Plano de Saúde</span>
+              Planejamento e Consultoria<br />
+              <span className="text-primary">em Planos de Saúde</span>
             </h1>
             
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
@@ -90,7 +90,7 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-8" data-testid="text-services-title">
-              Especialistas em Planejamento Financeiro
+              Especialistas em Planos de Saúde
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed" data-testid="text-services-description">
               Com mais de 7 anos de experiência, oferecemos consultoria especializada para encontrar as melhores soluções em planos de saúde e proteção financeira

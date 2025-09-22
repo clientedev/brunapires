@@ -10,13 +10,13 @@ export default function Footer() {
             <div className="mb-4">
               <img 
                 src={bpcLogo} 
-                alt="BPC Consultoria Financeira & Plano de Saúde" 
+                alt="BPC Planejamento e Consultoria em Planos de Saúde" 
                 className="h-16 w-auto brightness-0 invert"
                 data-testid="img-footer-logo"
               />
             </div>
             <p className="text-background/70 text-sm">
-              Desde 2018 oferecendo consultoria especializada em planejamento financeiro e planos de saúde, com transparência e comprometimento.
+              Desde 2018 oferecendo consultoria especializada em planos de saúde, com transparência e comprometimento total.
             </p>
           </div>
           <div>
@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
         <div className="border-t border-background/20 pt-8 text-center">
           <p className="text-background/70 text-sm" data-testid="text-copyright">
-            © 2025 BPC Planejamento e Consultoria. Todos os direitos reservados.
+            © 2025 BPC Planejamento e Consultoria em Planos de Saúde. Todos os direitos reservados.
           </p>
         </div>
       </div>
