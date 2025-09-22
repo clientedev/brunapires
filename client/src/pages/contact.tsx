@@ -69,14 +69,18 @@ export default function Contact() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-background to-muted">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6" data-testid="text-contact-title">
-            Entre em Contato
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8" data-testid="text-contact-description">
-            Pronto para encontrar o plano ideal? Nossa equipe está aqui para ajudar você a fazer a melhor escolha.
-          </p>
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="text-6xl mb-8">📞</div>
+            <h1 className="text-5xl sm:text-6xl font-display font-bold text-foreground mb-8" data-testid="text-contact-title">
+              Consultoria Gratuita
+            </h1>
+            <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed" data-testid="text-contact-description">
+              Agende sua consultoria especializada em planos de saúde. Analisamos seu perfil e apresentamos as melhores opções do mercado, sem nenhum custo ou compromisso.
+            </p>
+          </div>
         </div>
       </section>
 

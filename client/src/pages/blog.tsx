@@ -68,14 +68,18 @@ export default function Blog() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-background to-muted">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6" data-testid="text-blog-title">
-            Blog e Conteúdo
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8" data-testid="text-blog-description">
-            Artigos e dicas sobre saúde, prevenção e planejamento financeiro para ajudar você a tomar as melhores decisões
-          </p>
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="text-6xl mb-8">📝</div>
+            <h1 className="text-5xl sm:text-6xl font-display font-bold text-foreground mb-8" data-testid="text-blog-title">
+              Blog BPC
+            </h1>
+            <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed" data-testid="text-blog-description">
+              Conteúdo especializado sobre planos de saúde, proteção financeira e consultoria para auxiliar suas decisões mais importantes
+            </p>
+          </div>
         </div>
       </section>
 
@@ -92,12 +96,9 @@ export default function Blog() {
             <Card className="overflow-hidden hover:shadow-xl transition-shadow" data-testid="card-featured-article">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="relative">
-                  <img 
-                    src={featuredArticle.image} 
-                    alt={featuredArticle.title}
-                    className="w-full h-64 lg:h-full object-cover"
-                    data-testid="img-featured-article"
-                  />
+                  <div className="w-full h-64 lg:h-full bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
+                    <div className="text-8xl opacity-30">🎆</div>
+                  </div>
                   <div className="absolute top-4 left-4">
                     <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
                       {featuredArticle.category}

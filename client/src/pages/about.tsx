@@ -1,74 +1,72 @@
-import { CheckCircle, TrendingUp, Users, Award } from "lucide-react";
+import bpcCircularLogo from "@assets/image_1758563943976.png";
 
 export default function About() {
   return (
     <div className="pt-20">
       {/* About Section */}
-      <section className="py-20 bg-muted">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+          <div className="max-w-5xl mx-auto text-center">
+            <div className="flex justify-center mb-8">
               <img 
-                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                alt="Professional business team consultation" 
-                className="rounded-xl shadow-xl w-full h-auto"
-                data-testid="img-about-team"
+                src={bpcCircularLogo} 
+                alt="BPC Logo" 
+                className="h-24 w-24 opacity-80"
+                data-testid="img-about-logo"
               />
             </div>
-            <div>
-              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-6" data-testid="text-about-title">
-                Sobre a BPC
-              </h1>
-              <p className="text-lg text-muted-foreground mb-6" data-testid="text-about-history">
-                Desde 2018 no mercado, a BPC Planejamento e Consultoria construiu uma trajetória sólida baseada na confiança, transparência e comprometimento com nossos clientes.
+            
+            <h1 className="text-5xl sm:text-6xl font-display font-bold text-foreground mb-8" data-testid="text-about-title">
+              Sobre a BPC
+            </h1>
+            
+            <div className="w-24 h-1 bg-primary mx-auto mb-12"></div>
+            
+            <div className="max-w-4xl mx-auto mb-12">
+              <p className="text-xl text-muted-foreground mb-8 leading-relaxed" data-testid="text-about-history">
+                Desde <strong>2018</strong> construímos uma trajetória sólida no mercado de consultoria financeira, baseada na <strong>confiança, transparência e comprometimento</strong> com nossos clientes.
               </p>
-              <p className="text-lg text-muted-foreground mb-8" data-testid="text-about-expansion">
-                Em 2025, expandimos nossa atuação para o segmento de planos de saúde, trazendo toda nossa experiência em consultoria para oferecer soluções personalizadas que realmente atendem às necessidades de cada cliente.
+              <p className="text-xl text-muted-foreground mb-12 leading-relaxed" data-testid="text-about-expansion">
+                Nossa especialidade em <strong>planos de saúde</strong> representa mais de 7 anos de experiência oferecendo soluções personalizadas que realmente atendem às necessidades de cada cliente. Complementamos nosso portfólio com <strong>seguros de vida</strong> para proteção financeira completa.
               </p>
+            </div>
               
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-                <div className="text-center" data-testid="stat-anos">
-                  <div className="text-3xl font-bold text-primary mb-2">7+</div>
-                  <div className="text-sm text-muted-foreground">Anos de experiência</div>
-                </div>
-                <div className="text-center" data-testid="stat-clientes-atendidos">
-                  <div className="text-3xl font-bold text-primary mb-2">500+</div>
-                  <div className="text-sm text-muted-foreground">Clientes atendidos</div>
-                </div>
-                <div className="text-center" data-testid="stat-satisfacao-clientes">
-                  <div className="text-3xl font-bold text-primary mb-2">98%</div>
-                  <div className="text-sm text-muted-foreground">Satisfação</div>
-                </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-16">
+              <div className="text-center" data-testid="stat-anos">
+                <div className="text-4xl font-display font-bold text-primary mb-2">2018</div>
+                <div className="text-sm font-medium text-muted-foreground">Fundação da BPC</div>
               </div>
+              <div className="text-center" data-testid="stat-clientes-atendidos">
+                <div className="text-4xl font-display font-bold text-primary mb-2">500+</div>
+                <div className="text-sm font-medium text-muted-foreground">Clientes Atendidos</div>
+              </div>
+              <div className="text-center" data-testid="stat-satisfacao-clientes">
+                <div className="text-4xl font-display font-bold text-primary mb-2">98%</div>
+                <div className="text-sm font-medium text-muted-foreground">Satisfação dos Clientes</div>
+              </div>
+            </div>
 
-              <div className="space-y-4">
-                <div className="flex items-start" data-testid="diferencial-consultivo">
-                  <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-4 mt-1">
-                    <CheckCircle className="w-3 h-3 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">Atendimento Consultivo</h4>
-                    <p className="text-muted-foreground">Não vendemos apenas produtos, oferecemos soluções personalizadas</p>
-                  </div>
-                </div>
-                <div className="flex items-start" data-testid="diferencial-transparencia">
-                  <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-4 mt-1">
-                    <CheckCircle className="w-3 h-3 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">Transparência Total</h4>
-                    <p className="text-muted-foreground">Explicamos todos os detalhes para você tomar a melhor decisão</p>
-                  </div>
-                </div>
-                <div className="flex items-start" data-testid="diferencial-parceria">
-                  <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-4 mt-1">
-                    <CheckCircle className="w-3 h-3 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">Parceria de Longo Prazo</h4>
-                    <p className="text-muted-foreground">Acompanhamento completo antes, durante e após a contratação</p>
-                  </div>
-                </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="bg-muted rounded-2xl p-8" data-testid="diferencial-consultivo">
+                <div className="text-5xl mb-6">💼</div>
+                <h4 className="text-xl font-display font-semibold text-foreground mb-4">Abordagem Consultiva</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Não vendemos produtos, oferecemos soluções. Cada cliente recebe uma análise personalizada e recomendações baseadas em suas necessidades específicas.
+                </p>
+              </div>
+              <div className="bg-muted rounded-2xl p-8" data-testid="diferencial-transparencia">
+                <div className="text-5xl mb-6">🔍</div>
+                <h4 className="text-xl font-display font-semibold text-foreground mb-4">Transparência Total</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Explicamos todos os detalhes, coberturas, carências e custos de forma clara para que você tome a decisão mais informada possível.
+                </p>
+              </div>
+              <div className="bg-muted rounded-2xl p-8" data-testid="diferencial-parceria">
+                <div className="text-5xl mb-6">🤝</div>
+                <h4 className="text-xl font-display font-semibold text-foreground mb-4">Relacionamento Duradouro</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Acompanhamento completo antes, durante e após a contratação. Construímos parcerias de longo prazo com nossos clientes.
+                </p>
               </div>
             </div>
           </div>
@@ -76,93 +74,90 @@ export default function About() {
       </section>
 
       {/* Mission & Values */}
-      <section className="py-20 bg-background">
+      <section className="py-24 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-mission-title">
-              Nossa Missão e Valores
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-mission-description">
-              Construímos relacionamentos duradouros baseados na confiança e no comprometimento com o bem-estar de nossos clientes
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center" data-testid="card-missao">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <TrendingUp className="w-10 h-10 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-4">Missão</h3>
-              <p className="text-muted-foreground">
-                Oferecer consultoria especializada em proteção financeira e saúde, proporcionando segurança e tranquilidade para nossos clientes através de soluções personalizadas.
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-8" data-testid="text-mission-title">
+                Nossa Essência
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-mission-description">
+                Os princípios que guiam nossa consultoria e definem nosso compromisso com a excelência no atendimento
               </p>
             </div>
 
-            <div className="text-center" data-testid="card-visao">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Users className="w-10 h-10 text-primary" />
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+              <div className="bg-background rounded-2xl p-8 shadow-lg text-center" data-testid="card-missao">
+                <div className="text-5xl mb-6">🎯</div>
+                <h3 className="text-2xl font-display font-bold text-foreground mb-6">Missão</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Oferecer consultoria especializada em planos de saúde e proteção financeira, proporcionando segurança e tranquilidade através de soluções verdadeiramente personalizadas.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-4">Visão</h3>
-              <p className="text-muted-foreground">
-                Ser reconhecida como a principal referência em consultoria de planos de saúde e seguros, conhecida pela excelência no atendimento e resultados.
-              </p>
-            </div>
 
-            <div className="text-center" data-testid="card-valores">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Award className="w-10 h-10 text-primary" />
+              <div className="bg-background rounded-2xl p-8 shadow-lg text-center" data-testid="card-visao">
+                <div className="text-5xl mb-6">🔮</div>
+                <h3 className="text-2xl font-display font-bold text-foreground mb-6">Visão</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Ser reconhecida como a principal referência em consultoria de planos de saúde no Brasil, conhecida pela excelência no atendimento e resultados excepcionais.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-4">Valores</h3>
-              <p className="text-muted-foreground">
-                Transparência, integridade, comprometimento com o cliente, excelência no atendimento e busca contínua pela melhor solução.
-              </p>
+
+              <div className="bg-background rounded-2xl p-8 shadow-lg text-center" data-testid="card-valores">
+                <div className="text-5xl mb-6">⭐</div>
+                <h3 className="text-2xl font-display font-bold text-foreground mb-6">Valores</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  <strong>Transparência</strong> em todos os processos, <strong>integridade</strong> nas recomendações, <strong>comprometimento</strong> com o cliente e <strong>excelência</strong> no atendimento.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Team/Approach Section */}
-      <section className="py-20 bg-muted">
+      {/* Approach Section */}
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-8" data-testid="text-approach-title">
-              Nossa Abordagem
+          <div className="max-w-5xl mx-auto text-center">
+            <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-8" data-testid="text-approach-title">
+              Como Trabalhamos
             </h2>
-            <p className="text-lg text-muted-foreground mb-12" data-testid="text-approach-description">
-              Acreditamos que cada cliente é único e merece uma solução personalizada. Por isso, nosso processo de consultoria é cuidadosamente estruturado para entender suas necessidades específicas e oferecer as melhores alternativas do mercado.
+            <div className="w-24 h-1 bg-primary mx-auto mb-12"></div>
+            <p className="text-xl text-muted-foreground mb-16 max-w-3xl mx-auto leading-relaxed" data-testid="text-approach-description">
+              Nosso processo consultivo é estruturado para garantir que cada cliente receba a solução mais adequada às suas necessidades específicas
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="text-center" data-testid="step-analise">
-                <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                  1
+                <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <div className="text-3xl font-display font-bold text-primary">1</div>
                 </div>
-                <h4 className="font-semibold text-foreground mb-2">Análise</h4>
-                <p className="text-sm text-muted-foreground">Entendemos suas necessidades e perfil</p>
+                <h4 className="text-xl font-display font-semibold text-foreground mb-4">Análise</h4>
+                <p className="text-muted-foreground">Entendimento profundo das suas necessidades, perfil e orçamento</p>
               </div>
 
               <div className="text-center" data-testid="step-comparacao">
-                <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                  2
+                <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <div className="text-3xl font-display font-bold text-primary">2</div>
                 </div>
-                <h4 className="font-semibold text-foreground mb-2">Comparação</h4>
-                <p className="text-sm text-muted-foreground">Comparamos opções do mercado</p>
+                <h4 className="text-xl font-display font-semibold text-foreground mb-4">Comparação</h4>
+                <p className="text-muted-foreground">Análise comparativa de todas as opções disponíveis no mercado</p>
               </div>
 
               <div className="text-center" data-testid="step-proposta">
-                <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                  3
+                <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <div className="text-3xl font-display font-bold text-primary">3</div>
                 </div>
-                <h4 className="font-semibold text-foreground mb-2">Proposta</h4>
-                <p className="text-sm text-muted-foreground">Apresentamos a melhor solução</p>
+                <h4 className="text-xl font-display font-semibold text-foreground mb-4">Proposta</h4>
+                <p className="text-muted-foreground">Apresentação da solução ideal com transparência total</p>
               </div>
 
               <div className="text-center" data-testid="step-acompanhamento">
-                <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                  4
+                <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <div className="text-3xl font-display font-bold text-primary">4</div>
                 </div>
-                <h4 className="font-semibold text-foreground mb-2">Acompanhamento</h4>
-                <p className="text-sm text-muted-foreground">Suporte contínuo pós-contratação</p>
+                <h4 className="text-xl font-display font-semibold text-foreground mb-4">Acompanhamento</h4>
+                <p className="text-muted-foreground">Suporte contínuo durante todo o relacionamento</p>
               </div>
             </div>
           </div>
