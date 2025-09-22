@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import bpcLogo from "@assets/image_1758563953659.png";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,8 +23,12 @@ export default function Navigation() {
         <div className="flex justify-between items-center py-4">
           <Link href="/" data-testid="link-home-logo">
             <div className="flex items-center">
-              <div className="text-2xl font-bold text-primary">BPC</div>
-              <div className="ml-2 text-sm text-muted-foreground">Planejamento & Consultoria</div>
+              <img 
+                src={bpcLogo} 
+                alt="BPC Consultoria Financeira & Plano de Saúde" 
+                className="h-12 w-auto"
+                data-testid="img-bpc-logo"
+              />
             </div>
           </Link>
           
@@ -33,14 +38,13 @@ export default function Navigation() {
                 key={item.href} 
                 href={item.href}
                 data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
-              >
-                <a className={`transition-colors ${
+                className={`transition-colors ${
                   location === item.href 
                     ? "text-primary font-semibold" 
                     : "text-foreground hover:text-primary"
-                }`}>
-                  {item.label}
-                </a>
+                }`}
+              >
+                {item.label}
               </Link>
             ))}
           </div>
@@ -65,14 +69,13 @@ export default function Navigation() {
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
                   data-testid={`link-mobile-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
-                >
-                  <a className={`block transition-colors ${
+                  className={`block transition-colors ${
                     location === item.href 
                       ? "text-primary font-semibold" 
                       : "text-foreground hover:text-primary"
-                  }`}>
-                    {item.label}
-                  </a>
+                  }`}
+                >
+                  {item.label}
                 </Link>
               ))}
             </div>

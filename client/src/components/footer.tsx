@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import bpcLogo from "@assets/image_1758563953659.png";
 
 export default function Footer() {
   return (
@@ -6,30 +7,34 @@ export default function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="flex items-center mb-4">
-              <div className="text-2xl font-bold text-primary">BPC</div>
-              <div className="ml-2 text-sm text-background/70">Planejamento & Consultoria</div>
+            <div className="mb-4">
+              <img 
+                src={bpcLogo} 
+                alt="BPC Consultoria Financeira & Plano de Saúde" 
+                className="h-16 w-auto brightness-0 invert"
+                data-testid="img-footer-logo"
+              />
             </div>
             <p className="text-background/70 text-sm">
-              Desde 2018 oferecendo soluções em planejamento financeiro e proteção para você e sua família.
+              Desde 2018 oferecendo consultoria especializada em planejamento financeiro e planos de saúde, com transparência e comprometimento.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-background mb-4">Serviços</h4>
             <ul className="space-y-2 text-sm text-background/70">
               <li>
-                <Link href="/planos-saude" data-testid="link-footer-planos">
-                  <a className="hover:text-primary transition-colors">Planos de Saúde</a>
+                <Link href="/planos-saude" data-testid="link-footer-planos" className="hover:text-primary transition-colors">
+                  Planos de Saúde
                 </Link>
               </li>
               <li>
-                <Link href="/seguro-vida" data-testid="link-footer-seguro">
-                  <a className="hover:text-primary transition-colors">Seguro de Vida</a>
+                <Link href="/seguro-vida" data-testid="link-footer-seguro" className="hover:text-primary transition-colors">
+                  Seguro de Vida
                 </Link>
               </li>
               <li>
-                <Link href="/contato" data-testid="link-footer-consultoria">
-                  <a className="hover:text-primary transition-colors">Consultoria</a>
+                <Link href="/contato" data-testid="link-footer-consultoria" className="hover:text-primary transition-colors">
+                  Consultoria
                 </Link>
               </li>
             </ul>
@@ -38,18 +43,18 @@ export default function Footer() {
             <h4 className="font-semibold text-background mb-4">Empresa</h4>
             <ul className="space-y-2 text-sm text-background/70">
               <li>
-                <Link href="/sobre" data-testid="link-footer-sobre">
-                  <a className="hover:text-primary transition-colors">Sobre Nós</a>
+                <Link href="/sobre" data-testid="link-footer-sobre" className="hover:text-primary transition-colors">
+                  Sobre Nós
                 </Link>
               </li>
               <li>
-                <Link href="/blog" data-testid="link-footer-blog">
-                  <a className="hover:text-primary transition-colors">Blog</a>
+                <Link href="/blog" data-testid="link-footer-blog" className="hover:text-primary transition-colors">
+                  Blog
                 </Link>
               </li>
               <li>
-                <Link href="/contato" data-testid="link-footer-contato">
-                  <a className="hover:text-primary transition-colors">Contato</a>
+                <Link href="/contato" data-testid="link-footer-contato" className="hover:text-primary transition-colors">
+                  Contato
                 </Link>
               </li>
             </ul>
