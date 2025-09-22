@@ -1,0 +1,88 @@
+Crie um site institucional moderno, responsivo e elegante para a empresa BPC Planejamento e Consultoria em Planos de Saúde.
+
+Identidade Visual
+
+Paleta de cores:
+
+Dourado/Bege (principal – sofisticação e confiança)
+
+Branco (fundo – clareza e leveza)
+
+Cinza suave (apoio – seções e divisórias discretas)
+
+Preto ou cinza-escuro (texto e contrastes elegantes)
+
+Tipografia moderna, clean e fácil de ler.
+
+Estilo minimalista, com foco em conforto visual e profissionalismo.
+
+Estrutura e Páginas
+
+Home
+
+Banner principal com slogan: “Seu futuro e saúde planejados com cuidado.”
+
+Destaque maior para Planos de Saúde – cards interativos, ícones e CTA visível (“Peça sua cotação agora”).
+
+Seção secundária para Seguro de Vida, como serviço complementar.
+
+Chamada para ação (CTA) em dourado: “Solicite sua consultoria gratuita”.
+
+Sobre Nós
+
+História da BPC (desde 2018 no mercado e expansão em 2025 para saúde).
+
+Propósito: atendimento consultivo, transparência e comprometimento.
+
+Diferenciais: acompanhamento pré e pós-contratação, parceria de longo prazo.
+
+Planos de Saúde (página exclusiva e central do site)
+
+Apresentação clara dos benefícios.
+
+Comparação simples de opções (ex.: individual, familiar, empresarial).
+
+Foco em como a consultoria traz segurança, economia e clareza nas escolhas.
+
+FAQ específico sobre planos de saúde.
+
+CTA: “Fale agora com um consultor especializado”.
+
+Seguro de Vida
+
+Apresentar como complemento de proteção financeira.
+
+Benefícios explicados de forma clara e acessível.
+
+Blog/Conteúdo
+
+Artigos sobre saúde, prevenção, importância de plano de saúde para empresários e autônomos.
+
+Linguagem consultiva e simples.
+
+Contato
+
+Formulário intuitivo (nome, e-mail, telefone, mensagem).
+
+E-mail: bpcplanejamento@outlook.com
+.
+
+Botão de WhatsApp fixo no canto da tela.
+
+Estilo Visual
+
+Fundo branco com áreas em bege/dourado suave.
+
+Botões e CTAs em dourado destacado.
+
+Ícones minimalistas em preto/cinza.
+
+Layout responsivo, elegante e consultivo.
+
+Sensação que o site deve transmitir
+
+Confiança, conforto e clareza.
+
+Forte posicionamento em Planos de Saúde como serviço principal.
+
+Seguro de Vida aparece como complemento estratégico.
