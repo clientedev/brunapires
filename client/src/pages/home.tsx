@@ -175,50 +175,48 @@ export default function Home() {
             {/* Secondary Service - Life Insurance */}
             <div data-testid="section-seguro-vida">
               <div className="bg-background rounded-2xl p-8 border border-border">
-                <h3 className="text-3xl font-display font-bold text-foreground mb-6">Seguro de Vida</h3>
-                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Serviço complementar que oferecemos para garantir proteção financeira completa. Enquanto o plano de saúde cuida da sua saúde, o seguro de vida protege financeiramente sua família.
-                </p>
+                <h3 className="text-3xl font-display font-bold text-foreground mb-6">SEGURO DE VIDA</h3>
                 
-                <div className="bg-background/50 rounded-xl p-4 mb-6 border border-border/50">
-                  <h4 className="font-semibold text-foreground mb-2 flex items-center">
-                    <Shield className="w-4 h-4 mr-2 text-primary" />
-                    Modalidades de Seguro Disponíveis
-                  </h4>
-                  <div className="grid grid-cols-1 gap-2 text-sm text-muted-foreground">
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-primary/60 rounded-full mr-2"></div>
-                      <span><strong>Individual:</strong> Proteção pessoal básica e invalidez</span>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                  {/* Familiar e Individual */}
+                  <div className="bg-primary/5 rounded-xl p-6 border border-primary/20">
+                    <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center">
+                      <Heart className="w-5 h-5 mr-2 text-primary" />
+                      Familiar e Individual
+                    </h4>
+                    <div className="space-y-3">
+                      <p className="text-muted-foreground">
+                        Proteção financeira e liquidez imediata em caso de imprevistos (doenças graves, acidentes, cirurgias).
+                      </p>
+                      <p className="text-muted-foreground">
+                        Preservação do patrimônio e proteção financeira da família, garantindo continuidade do legado.
+                      </p>
                     </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-primary/60 rounded-full mr-2"></div>
-                      <span><strong>Familiar:</strong> Cobertura estendida com auxílio educação</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 bg-primary/60 rounded-full mr-2"></div>
-                      <span><strong>Empresarial:</strong> Benefícios corporativos para equipes</span>
+                  </div>
+                  
+                  {/* Empresarial */}
+                  <div className="bg-primary/5 rounded-xl p-6 border border-primary/20">
+                    <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center">
+                      <Shield className="w-5 h-5 mr-2 text-primary" />
+                      Empresarial
+                    </h4>
+                    <div className="space-y-3">
+                      <p className="text-muted-foreground">
+                        Continuidade dos negócios com recursos imediatos para manter a operação.
+                      </p>
+                      <p className="text-muted-foreground">
+                        Liquidez para herdeiros e facilitação de acordos entre sócios, reduzindo conflitos.
+                      </p>
+                      <p className="text-muted-foreground">
+                        Proteção do patrimônio empresarial.
+                      </p>
                     </div>
                   </div>
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary mb-1">Individual</div>
-                    <div className="text-sm text-muted-foreground">Proteção pessoal</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary mb-1">Familiar</div>
-                    <div className="text-sm text-muted-foreground">Toda a família</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary mb-1">Empresarial</div>
-                    <div className="text-sm text-muted-foreground">Sua equipe</div>
-                  </div>
-                </div>
-                
-                <Link href="/seguro-vida">
+                <Link href="/contato">
                   <Button variant="outline" size="lg" className="px-8 py-3 font-semibold border-2" data-testid="button-saiba-mais-protecao">
-                    Saiba Mais sobre Proteção
+                    falar com consultor
                   </Button>
                 </Link>
               </div>
