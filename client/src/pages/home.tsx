@@ -21,18 +21,15 @@ export default function Home() {
             </div>
             
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-foreground mb-8" data-testid="text-hero-title">
-              Planejamento e Consultoria<br />
-              <span className="text-primary">em Planos de Saúde</span>
+              Planejamento consultivo em<br />
+              <span className="text-primary">Planos de Saúde e Seguros de Vida</span><br />
+              <span className="text-3xl sm:text-4xl lg:text-5xl">— do individual ao corporativo.</span>
             </h1>
             
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
             
-            <p className="text-2xl font-display font-medium text-foreground mb-4" data-testid="text-hero-tagline">
-              Seu futuro e saúde planejados com cuidado
-            </p>
-            
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed" data-testid="text-hero-description">
-              Desde 2018 oferecemos consultoria especializada com <strong className="text-foreground">transparência e comprometimento</strong>. Somos especialistas em planos de saúde e oferecemos seguros de vida como proteção complementar.
+              Com experiência e visão estratégica, ajudamos negócios e pessoas a cuidarem do que mais importa: <strong className="text-foreground">segurança, bem-estar e continuidade</strong>.
             </p>
             
             <div className="bg-background/80 backdrop-blur border border-primary/20 rounded-2xl p-6 max-w-2xl mx-auto mb-12">
