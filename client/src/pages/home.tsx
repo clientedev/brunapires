@@ -32,22 +32,6 @@ export default function Home() {
               Com experiência e visão estratégica, ajudamos negócios e pessoas a cuidarem do que mais importa: <strong className="text-foreground">segurança, bem-estar e continuidade</strong>.
             </p>
             
-            <div className="bg-background/80 backdrop-blur border border-primary/20 rounded-2xl p-6 max-w-2xl mx-auto mb-12">
-              <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span>Consultoria 100% Gratuita</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span>Sem Compromisso</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span>Total Transparência</span>
-                </div>
-              </div>
-            </div>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
               <Link href="/contato">
@@ -266,63 +250,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Exclusive Benefits */}
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h3 className="text-3xl font-display font-bold text-foreground mb-4">Benefícios Exclusivos BPC</h3>
-              <p className="text-lg text-muted-foreground">O que você só encontra aqui</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-primary/5 rounded-xl p-6 border border-primary/20">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <CheckCircle className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Análise Médica Personalizada</h4>
-                    <p className="text-sm text-muted-foreground">Avaliamos seu histórico médico para encontrar operadoras que melhor atendem suas necessidades específicas</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-primary/5 rounded-xl p-6 border border-primary/20">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <Heart className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Acompanhamento Vitalício</h4>
-                    <p className="text-sm text-muted-foreground">Suporte contínuo mesmo após a contratação: reajustes, mudanças, dúvidas e renovações</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-primary/5 rounded-xl p-6 border border-primary/20">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <Users className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Consultoria Familiar Completa</h4>
-                    <p className="text-sm text-muted-foreground">Analisamos toda a família para encontrar a melhor estratégia de proteção com economia escalonada</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-primary/5 rounded-xl p-6 border border-primary/20">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Comparativo Transparente</h4>
-                    <p className="text-sm text-muted-foreground">Relatório detalhado comparando todas as opções com prós, contras e recomendação justificada</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -360,20 +287,6 @@ export default function Home() {
               </Link>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
-              <div className="bg-primary-foreground/10 backdrop-blur rounded-xl p-4 border border-primary-foreground/20">
-                <div className="text-primary-foreground font-semibold mb-1">✓ Consultoria Gratuita</div>
-                <div className="text-primary-foreground/70 text-sm">Análise sem nenhum custo</div>
-              </div>
-              <div className="bg-primary-foreground/10 backdrop-blur rounded-xl p-4 border border-primary-foreground/20">
-                <div className="text-primary-foreground font-semibold mb-1">✓ Sem Compromisso</div>
-                <div className="text-primary-foreground/70 text-sm">Você decide quando contratar</div>
-              </div>
-              <div className="bg-primary-foreground/10 backdrop-blur rounded-xl p-4 border border-primary-foreground/20">
-                <div className="text-primary-foreground font-semibold mb-1">✓ Total Transparência</div>
-                <div className="text-primary-foreground/70 text-sm">Explicamos tudo claramente</div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
