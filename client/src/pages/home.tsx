@@ -170,11 +170,12 @@ export default function Home() {
                     </h4>
                     <div className="space-y-3">
                       <p className="text-muted-foreground">
-                        Proteção financeira e liquidez imediata em caso de imprevistos (doenças graves, acidentes, cirurgias).
+                        proteção financeira e liquidez imediata para você e sua família em caso de imprevistos tais como:
                       </p>
-                      <p className="text-muted-foreground">
-                        Preservação do patrimônio e proteção financeira da família, garantindo continuidade do legado.
-                      </p>
+                      <ul className="text-muted-foreground ml-4 space-y-1">
+                        <li>• Diagnósticos de doenças graves, acidentes e cirurgias</li>
+                        <li>• Preservação do patrimônio constituído e proteção financeira da família permitindo a continuidade do legado</li>
+                      </ul>
                     </div>
                   </div>
                   
@@ -186,14 +187,13 @@ export default function Home() {
                     </h4>
                     <div className="space-y-3">
                       <p className="text-muted-foreground">
-                        Continuidade dos negócios com recursos imediatos para manter a operação.
+                        trabalhamos o seguro de vida empresarial como parte da estratégia de proteção e governança corporativa, trazendo claros benefícios para a empresa e sócios, tais como:
                       </p>
-                      <p className="text-muted-foreground">
-                        Liquidez para herdeiros e facilitação de acordos entre sócios, reduzindo conflitos.
-                      </p>
-                      <p className="text-muted-foreground">
-                        Proteção do patrimônio empresarial.
-                      </p>
+                      <ul className="text-muted-foreground ml-4 space-y-1">
+                        <li>• Continuidade dos negócios com recursos imediatos para manter a operação</li>
+                        <li>• Liquidez para herdeiros e facilitando o acordo entre sócios, reduzindo conflitos</li>
+                        <li>• Proteção do patrimônio empresarial</li>
+                      </ul>
                     </div>
                   </div>
                 </div>

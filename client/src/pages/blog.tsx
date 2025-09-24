@@ -1,69 +1,76 @@
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, User, ArrowRight } from "lucide-react";
+import { type Post } from "@shared/schema";
 
 export default function Blog() {
-  const articles = [
+  const { data: posts = [], isLoading } = useQuery<Post[]>({
+    queryKey: ["/api/posts"],
+  });
+
+  const { data: featuredPost } = useQuery<Post>({
+    queryKey: ["/api/posts/featured"],
+  });
+
+  // Fallback posts for display if no real posts exist
+  const fallbackArticles = [
     {
-      id: 1,
+      id: "1",
       title: "A Importância da Prevenção na Saúde",
       excerpt: "Descubra como investir em prevenção pode economizar recursos e garantir melhor qualidade de vida para você e sua família.",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
+      imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
       author: "Dr. Maria Silva",
-      date: "15 de Janeiro, 2025",
+      createdAt: "2025-01-15T10:00:00Z",
       category: "Saúde Preventiva",
-      featured: true
+      featured: true,
+      published: true,
+      content: "",
+      updatedAt: "2025-01-15T10:00:00Z"
     },
     {
-      id: 2,
+      id: "2",
       title: "Plano de Saúde para Empresários",
       excerpt: "Guia completo para empresários escolherem o melhor plano de saúde para si e seus funcionários com dicas práticas.",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
+      imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
       author: "Carlos Santos",
-      date: "12 de Janeiro, 2025",
-      category: "Empresarial"
+      createdAt: "2025-01-12T10:00:00Z",
+      category: "Empresarial",
+      featured: false,
+      published: true,
+      content: "",
+      updatedAt: "2025-01-12T10:00:00Z"
     },
     {
-      id: 3,
+      id: "3",
       title: "Seguro de Vida: Quando Contratar?",
       excerpt: "Entenda o momento ideal para contratar um seguro de vida e como escolher a cobertura adequada para sua situação.",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
+      imageUrl: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
       author: "Ana Costa",
-      date: "10 de Janeiro, 2025",
-      category: "Seguro de Vida"
-    },
-    {
-      id: 4,
-      title: "Como Economizar no Plano de Saúde",
-      excerpt: "Estratégias práticas para reduzir custos com plano de saúde sem abrir mão da qualidade no atendimento.",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
-      author: "João Silva",
-      date: "8 de Janeiro, 2025",
-      category: "Economia"
-    },
-    {
-      id: 5,
-      title: "Telemedicina: O Futuro da Saúde",
-      excerpt: "Explore como a telemedicina está revolucionando o acesso aos cuidados de saúde e seus benefícios para pacientes.",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
-      author: "Dra. Patricia Lima",
-      date: "5 de Janeiro, 2025",
-      category: "Tecnologia"
-    },
-    {
-      id: 6,
-      title: "Plano de Saúde para Autônomos",
-      excerpt: "Orientações específicas para profissionais autônomos escolherem o plano de saúde mais adequado às suas necessidades.",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
-      author: "Ricardo Ferreira",
-      date: "3 de Janeiro, 2025",
-      category: "Autônomos"
+      createdAt: "2025-01-10T10:00:00Z",
+      category: "Seguro de Vida",
+      featured: false,
+      published: true,
+      content: "",
+      updatedAt: "2025-01-10T10:00:00Z"
     }
   ];
 
-  const featuredArticle = articles.find(article => article.featured);
-  const regularArticles = articles.filter(article => !article.featured);
+  const displayPosts = posts.length > 0 ? posts : fallbackArticles;
+  const featuredArticle = featuredPost || displayPosts.find(post => post.featured);
+  const regularArticles = displayPosts.filter(post => !post.featured);
+
+  if (isLoading) {
+    return (
+      <div className="pt-20 min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
+          <p className="mt-4 text-muted-foreground">Carregando posts...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="pt-20">
@@ -116,7 +123,7 @@ export default function Blog() {
                     <User className="w-4 h-4 mr-2" />
                     <span className="mr-4">{featuredArticle.author}</span>
                     <Calendar className="w-4 h-4 mr-2" />
-                    <span>{featuredArticle.date}</span>
+                    <span>{new Date(featuredArticle.createdAt).toLocaleDateString('pt-BR')}</span>
                   </div>
                   <Button className="self-start" data-testid="button-read-featured">
                     Ler artigo completo
@@ -146,7 +153,7 @@ export default function Blog() {
               <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow" data-testid={`card-article-${article.id}`}>
                 <div className="relative">
                   <img 
-                    src={article.image} 
+                    src={article.imageUrl || "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f"} 
                     alt={article.title}
                     className="w-full h-48 object-cover"
                     data-testid={`img-article-${article.id}`}
@@ -168,7 +175,7 @@ export default function Blog() {
                     <User className="w-3 h-3 mr-1" />
                     <span className="mr-3">{article.author}</span>
                     <Calendar className="w-3 h-3 mr-1" />
-                    <span>{article.date}</span>
+                    <span>{new Date(article.createdAt).toLocaleDateString('pt-BR')}</span>
                   </div>
                   <Button variant="outline" size="sm" className="text-primary hover:bg-primary hover:text-primary-foreground" data-testid={`button-read-article-${article.id}`}>
                     Ler mais →

@@ -8,30 +8,37 @@ import Footer from "@/components/footer";
 import WhatsAppButton from "@/components/whatsapp-button";
 import Home from "@/pages/home";
 import About from "@/pages/about";
-import HealthPlans from "@/pages/health-plans";
-import LifeInsurance from "@/pages/life-insurance";
 import Blog from "@/pages/blog";
 import Contact from "@/pages/contact";
+import AdminDashboard from "@/pages/admin";
 import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navigation />
-      <main className="flex-1">
-        <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/sobre" component={About} />
-          <Route path="/planos-saude" component={HealthPlans} />
-          <Route path="/seguro-vida" component={LifeInsurance} />
-          <Route path="/blog" component={Blog} />
-          <Route path="/contato" component={Contact} />
-          <Route component={NotFound} />
-        </Switch>
-      </main>
-      <Footer />
-      <WhatsAppButton />
-    </div>
+    <Switch>
+      {/* Admin routes (no navigation/footer) */}
+      <Route path="/admin" component={AdminDashboard} />
+      
+      {/* Public routes (with navigation/footer) */}
+      <Route>
+        {() => (
+          <div className="min-h-screen flex flex-col">
+            <Navigation />
+            <main className="flex-1">
+              <Switch>
+                <Route path="/" component={Home} />
+                <Route path="/sobre" component={About} />
+                <Route path="/blog" component={Blog} />
+                <Route path="/contato" component={Contact} />
+                <Route component={NotFound} />
+              </Switch>
+            </main>
+            <Footer />
+            <WhatsAppButton />
+          </div>
+        )}
+      </Route>
+    </Switch>
   );
 }
 
