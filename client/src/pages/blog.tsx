@@ -203,29 +203,6 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6" data-testid="text-cta-blog-title">
-            Precisa de Orientação Personalizada?
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto" data-testid="text-cta-blog-description">
-            Nossa equipe está pronta para oferecer consultoria especializada e esclarecer todas as suas dúvidas sobre planos de saúde e seguros.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contato">
-              <Button size="lg" className="px-8 py-4 font-semibold" data-testid="button-blog-consultation">
-                Agendar Consultoria
-              </Button>
-            </Link>
-            <Link href="/planos-saude">
-              <Button variant="outline" size="lg" className="px-8 py-4 font-semibold" data-testid="button-blog-plans">
-                Ver Planos Disponíveis
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

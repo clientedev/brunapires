@@ -68,21 +68,6 @@ export default function Contact() {
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="text-6xl mb-8">📞</div>
-            <h1 className="text-5xl sm:text-6xl font-display font-bold text-foreground mb-8" data-testid="text-contact-title">
-              Consultoria Gratuita
-            </h1>
-            <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed" data-testid="text-contact-description">
-              Agende sua consultoria especializada em planos de saúde. Analisamos seu perfil e apresentamos as melhores opções do mercado, sem nenhum custo ou compromisso.
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Contact Section */}
       <section className="py-20 bg-background">
@@ -273,75 +258,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-faq-quick-title">
-              Dúvidas Frequentes
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-faq-quick-description">
-              Respostas rápidas para as principais questões
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card data-testid="faq-consultoria-gratuita">
-              <CardContent className="p-6">
-                <h3 className="font-semibold text-foreground mb-3">A consultoria é realmente gratuita?</h3>
-                <p className="text-muted-foreground text-sm">
-                  Sim, nossa consultoria é completamente gratuita. Recebemos comissão diretamente das operadoras, sem custo adicional para você.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card data-testid="faq-tempo-resposta">
-              <CardContent className="p-6">
-                <h3 className="font-semibold text-foreground mb-3">Em quanto tempo recebo retorno?</h3>
-                <p className="text-muted-foreground text-sm">
-                  Respondemos em até 2 horas durante horário comercial. Casos urgentes são priorizados para atendimento imediato.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card data-testid="faq-atendimento-online">
-              <CardContent className="p-6">
-                <h3 className="font-semibold text-foreground mb-3">Como funciona o atendimento online?</h3>
-                <p className="text-muted-foreground text-sm">
-                  Atendemos por WhatsApp, e-mail e videochamada. Todo o processo pode ser feito remotamente com total segurança.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card data-testid="faq-documentos">
-              <CardContent className="p-6">
-                <h3 className="font-semibold text-foreground mb-3">Que documentos preciso?</h3>
-                <p className="text-muted-foreground text-sm">
-                  Para cotação inicial, apenas RG e CPF. Documentos específicos serão solicitados apenas na contratação.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card data-testid="faq-compromisso">
-              <CardContent className="p-6">
-                <h3 className="font-semibold text-foreground mb-3">Sou obrigado a contratar?</h3>
-                <p className="text-muted-foreground text-sm">
-                  Não há qualquer compromisso. Nossa consultoria é informativa para ajudar você a tomar a melhor decisão.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card data-testid="faq-acompanhamento">
-              <CardContent className="p-6">
-                <h3 className="font-semibold text-foreground mb-3">Há suporte pós-contratação?</h3>
-                <p className="text-muted-foreground text-sm">
-                  Sim, oferecemos suporte contínuo, ajudando com dúvidas, alterações e renovações do seu plano.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
