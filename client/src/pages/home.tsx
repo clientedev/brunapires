@@ -235,7 +235,7 @@ export default function Home() {
             </h2>
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-stats-description">
-              Nossa trajetória de sucesso construída com dedicação, expertise e comprometimento real com cada cliente
+              Nossa trajetória de 20 anos no mercado financeiro e desde 2017 empreendendo no mercado de seguros e planos de saúde, nos permite a prestar uma consultoria dedicada que une planejamento, transparência e soluções para sua empresa e sua família.
             </p>
           </div>
           
