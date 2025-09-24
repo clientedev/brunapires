@@ -87,10 +87,10 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-8" data-testid="text-services-title">
-              Especialistas em Planos de Saúde
+              PLANOS DE SAÚDE
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed" data-testid="text-services-description">
-              Com mais de 7 anos de experiência, oferecemos consultoria especializada para encontrar as melhores soluções em planos de saúde e proteção financeira
+              Um plano de saúde não é apenas um benefício, é um investimento estratégico. Empresas que oferecem um plano de saúde conquistam mais engajamento e reduzem rotatividade. Na BPC oferecemos consultoria completa, desde a escolha do plano ideal até a conscientização dos colaboradores para um uso responsável.<br /><br /><strong>Sua equipe saudável, sua empresa sustentável.</strong>
             </p>
           </div>
           
@@ -100,21 +100,21 @@ export default function Home() {
               <div className="bg-primary/5 rounded-2xl p-8">
                 <h3 className="text-3xl font-display font-bold text-foreground mb-6">Planos de Saúde</h3>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Nossa especialidade principal desde 2018. Somos experts em analisar seu perfil médico, comparar todas as operadoras do mercado e encontrar o plano ideal com o melhor custo-benefício.
+                  Um plano de saúde não é apenas um benefício, é um investimento estratégico. Empresas que oferecem um plano de saúde conquistam mais engajamento e reduzem rotatividade. Na BPC oferecemos consultoria completa, desde a escolha do plano ideal até a conscientização dos colaboradores para um uso responsável.
                 </p>
                 
                 <div className="bg-primary/5 rounded-xl p-4 mb-6">
                   <h4 className="font-semibold text-foreground mb-2 flex items-center">
                     <Heart className="w-4 h-4 mr-2 text-primary" />
-                    Principais Operadoras que Trabalhamos
+                    Principais Seguradoras e Operadoras
                   </h4>
                   <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground">
-                    <span>• Unimed</span>
+                    <span>• Omint</span>
                     <span>• SulAmérica</span>
-                    <span>• Bradesco Saúde</span>
-                    <span>• NotreDame Intermédica</span>
-                    <span>• Hapvida</span>
-                    <span>• E muitas outras</span>
+                    <span>• Amil</span>
+                    <span>• Porto Seguro</span>
+                    <span>• Bradesco</span>
+                    <span>• Alice</span>
                   </div>
                 </div>
                 
@@ -142,9 +142,9 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <Link href="/planos-saude">
+                <Link href="/contato">
                   <Button size="lg" className="px-8 py-3 font-semibold" data-testid="button-consultor-especializado">
-                    Falar com Especialista
+                    falar com consultor
                   </Button>
                 </Link>
               </div>
