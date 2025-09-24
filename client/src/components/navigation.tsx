@@ -11,8 +11,6 @@ export default function Navigation() {
   const navItems = [
     { href: "/", label: "Início" },
     { href: "/sobre", label: "Sobre" },
-    { href: "/planos-saude", label: "Planos de Saúde" },
-    { href: "/seguro-vida", label: "Seguro de Vida" },
     { href: "/blog", label: "Blog" },
     { href: "/contato", label: "Contato" },
   ];

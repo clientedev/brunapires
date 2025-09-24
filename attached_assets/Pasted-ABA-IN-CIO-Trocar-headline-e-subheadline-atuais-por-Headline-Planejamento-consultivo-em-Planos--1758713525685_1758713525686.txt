@@ -1,0 +1,104 @@
+ABA INÍCIO
+
+Trocar headline e subheadline atuais por:
+
+Headline: "Planejamento consultivo em Planos de Saúde e Seguros de Vida — do individual ao corporativo.”
+
+Subheadline: "Com experiência e visão estratégica, ajudamos negócios e pessoas a cuidarem do que mais importa: segurança, bem-estar e continuidade.”
+
+Substituir o texto “Especialistas em Planos de Saúde...” por:
+
+PLANOS DE SAÚDE:
+"Um plano de saúde não é apenas um benefício, é um investimento estratégico. Empresas que oferecem um plano de saúde conquistam mais engajamento e reduzem rotatividade. Na BPC oferecemos consultoria completa, desde a escolha do plano ideal até a conscientização dos colaboradores para um uso responsável.
+
+Sua equipe saudável, sua empresa sustentável."
+
+Principais Seguradoras e Operadoras:
+
+Omint
+
+SulAmérica
+
+Amil
+
+Porto Seguro
+
+Bradesco
+
+Alice
+
+Link: “falar com consultor”
+
+Adicionar seção SEGURO DE VIDA com dois blocos:
+
+Familiar e Individual:
+
+Proteção financeira e liquidez imediata em caso de imprevistos (doenças graves, acidentes, cirurgias).
+
+Preservação do patrimônio e proteção financeira da família, garantindo continuidade do legado.
+
+Empresarial:
+
+Continuidade dos negócios com recursos imediatos para manter a operação.
+
+Liquidez para herdeiros e facilitação de acordos entre sócios, reduzindo conflitos.
+
+Proteção do patrimônio empresarial.
+
+Link: “falar com consultor”
+
+Alterar “PORQUE ESCOLHER a BPC?” para:
+
+“Nossa trajetória de 20 anos no mercado financeiro e desde 2017 empreendendo no mercado de seguros e planos de saúde, nos permite a prestar uma consultoria dedicada que une planejamento, transparência e soluções para sua empresa e sua família.”
+
+Remover:
+
+Os 3 quadrinhos (Consultoria Gratuita, Sem Compromisso, Transparência).
+
+A seção “Benefícios Exclusivos”.
+
+ABA SOBRE
+
+Trocar o texto “SOBRE A BPC” por:
+
+"Desde 2017, a BPC Planejamento e Consultoria oferece soluções em seguros de vida e planos de saúde, unindo experiência de mercado e visão estratégica. Nosso trabalho é consultivo e personalizado, com foco em proteger pessoas, fortalecer empresas e garantir resultados sustentáveis."
+
+Remover quadrinhos com números (data, 500+, 98%).
+
+Alterar quadrinhos para:
+
+EXPERIÊNCIA SÓLIDA: desde 2005 no mercado financeiro e desde 2017 empreendendo no setor de seguros e saúde.
+
+TRANSPARÊNCIA: construímos relacionamentos de longo prazo baseados em clareza e ética.
+
+PROTEÇÃO COMPLETA: atuamos em planos de saúde e seguros de vida, sempre com visão de planejamento.
+
+Alterar missão, visão e valores para:
+
+Missão: Levar proteção e planejamento em saúde e vida com soluções consultivas e sustentáveis.
+
+Visão: Ser referência em consultoria de benefícios, unindo cuidado com pessoas e resultados para empresas.
+
+Valores: Transparência, proximidade, sustentabilidade, excelência e cuidado.
+
+Remover a seção “Como Trabalhamos”.
+
+ABA CONTATO
+
+Remover:
+
+Texto de “📞 Consultoria Gratuita”.
+
+“Dúvidas Frequentes” e todas as perguntas/respostas.
+
+ABA BLOG
+
+Remover:
+
+Texto “Precisa de Orientação Personalizada” e tudo o que acompanha essa seção.
+
+ESTRUTURA FINAL DE ABAS
+
+Manter apenas: Início, Sobre, Blog, Contato.
+
+Remover: Plano de Saúde e Seguro de Vida como abas separadas.
