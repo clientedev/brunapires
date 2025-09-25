@@ -25,7 +25,7 @@ const formSchema = z.object({
   title: z.string().optional().default(""),
   excerpt: z.string().optional().default(""),
   content: z.string().optional().default(""),
-  imageUrl: z.string().url().optional().or(z.literal("")).default(""),
+  imageUrls: z.array(z.string().url()).max(3).default([]),
   author: z.string().optional().default(""),
   category: z.string().optional().default(""),
   featured: z.boolean().default(false),
@@ -37,7 +37,7 @@ type FormData = z.infer<typeof formSchema>;
 export default function PostEditor({ post, onClose }: PostEditorProps) {
   const { toast } = useToast();
   const isEditing = !!post;
-  const [uploadedImage, setUploadedImage] = useState<string | null>(post?.imageUrl || null);
+  const [uploadedImages, setUploadedImages] = useState<string[]>(post?.imageUrls || []);
   const [isUploading, setIsUploading] = useState(false);
 
   const form = useForm<FormData>({
@@ -46,7 +46,7 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
       title: post?.title || "",
       excerpt: post?.excerpt || "",
       content: post?.content || "",
-      imageUrl: post?.imageUrl || "",
+      imageUrls: post?.imageUrls || [],
       author: post?.author || "",
       category: post?.category || "",
       featured: post?.featured || false,
@@ -61,7 +61,7 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
       
       const postData = {
         ...data,
-        imageUrl: data.imageUrl || null,
+        imageUrls: data.imageUrls || [],
       };
       
       const response = await apiRequest(method, url, postData);

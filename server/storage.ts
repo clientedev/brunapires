@@ -190,7 +190,7 @@ export class MemStorage implements IStorage {
       author: insertPost.author || "",
       category: insertPost.category || "",
       id,
-      imageUrl: insertPost.imageUrl || null,
+      imageUrls: insertPost.imageUrls || [],
       featured: insertPost.featured || false,
       published: insertPost.published !== false,
       createdAt: new Date(),

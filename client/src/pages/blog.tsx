@@ -153,7 +153,7 @@ export default function Blog() {
               <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow" data-testid={`card-article-${article.id}`}>
                 <div className="relative">
                   <img 
-                    src={article.imageUrl || "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f"} 
+                    src={article.imageUrls?.[0] || "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f"} 
                     alt={article.title || ""}
                     className="w-full h-48 object-cover"
                     data-testid={`img-article-${article.id}`}
