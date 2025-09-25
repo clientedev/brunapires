@@ -142,12 +142,17 @@ export async function setupAuth(app: Express) {
   
   // Always enable simple admin login as fallback (even in Replit)
   app.post("/api/admin/login", (req, res) => {
-    const { password } = req.body;
-    if (password === "bruna4731") {
+    const { username, password } = req.body;
+    
+    // Default credentials: username "bruna.admin" and password "bruna4731"
+    if (username === "bruna.admin" && password === "bruna4731") {
       (req.session as any).isAdminAuthenticated = true;
       res.json({ success: true, message: "Login realizado com sucesso" });
     } else {
-      res.status(401).json({ success: false, message: "Senha incorreta" });
+      res.status(401).json({ 
+        success: false, 
+        message: "Usuário ou senha incorretos" 
+      });
     }
   });
   

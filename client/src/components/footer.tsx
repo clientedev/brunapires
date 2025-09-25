@@ -10,6 +10,7 @@ import bpcLogo from "@assets/image_1758570352685.png";
 
 export default function Footer() {
   const [showAdminLogin, setShowAdminLogin] = useState(false);
+  const [username, setUsername] = useState("bruna.admin");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
@@ -22,7 +23,7 @@ export default function Footer() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ username, password }),
         credentials: 'include', // Important for sessions
       });
       
@@ -35,6 +36,7 @@ export default function Footer() {
           });
           setShowAdminLogin(false);
           setPassword("");
+          setUsername("bruna.admin");
           // Delay to ensure session is set
           setTimeout(() => {
             window.location.href = '/admin';
@@ -45,7 +47,7 @@ export default function Footer() {
       
       toast({
         title: "Erro",
-        description: "Senha incorreta",
+        description: "Usuário ou senha incorretos",
         variant: "destructive",
       });
     } catch (error) {
@@ -148,6 +150,17 @@ export default function Footer() {
             </DialogHeader>
             <div className="space-y-4">
               <div className="space-y-2">
+                <Label htmlFor="admin-username">Usuário</Label>
+                <Input
+                  id="admin-username"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Digite o usuário"
+                  data-testid="input-admin-username"
+                />
+              </div>
+              <div className="space-y-2">
                 <Label htmlFor="admin-password">Senha</Label>
                 <Input
                   id="admin-password"
@@ -155,7 +168,7 @@ export default function Footer() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleAdminLogin()}
-                  placeholder="Digite a senha administrativa"
+                  placeholder="Digite a senha"
                   data-testid="input-admin-password"
                 />
               </div>
@@ -165,6 +178,7 @@ export default function Footer() {
                   onClick={() => {
                     setShowAdminLogin(false);
                     setPassword("");
+                    setUsername("bruna.admin");
                   }}
                   data-testid="button-cancel-login"
                 >
@@ -172,7 +186,7 @@ export default function Footer() {
                 </Button>
                 <Button
                   onClick={handleAdminLogin}
-                  disabled={!password || isLoading}
+                  disabled={!username || !password || isLoading}
                   data-testid="button-submit-login"
                 >
                   {isLoading ? "Entrando..." : "Entrar"}
