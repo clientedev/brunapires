@@ -222,6 +222,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/admin/posts", isAuthenticated, async (req, res) => {
     try {
+      // Ensure imageUrls doesn't exceed 3 items
+      if (req.body.imageUrls && req.body.imageUrls.length > 3) {
+        req.body.imageUrls = req.body.imageUrls.slice(0, 3);
+      }
+      
       const validatedData = insertPostSchema.parse(req.body);
       const post = await storage.createPost(validatedData);
       res.json({ 
@@ -247,6 +252,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.put("/api/admin/posts/:id", isAuthenticated, async (req, res) => {
     try {
+      // Ensure imageUrls doesn't exceed 3 items
+      if (req.body.imageUrls && req.body.imageUrls.length > 3) {
+        req.body.imageUrls = req.body.imageUrls.slice(0, 3);
+      }
+      
       const validatedData = updatePostSchema.parse(req.body);
       const post = await storage.updatePost(req.params.id, validatedData);
       res.json({ 
