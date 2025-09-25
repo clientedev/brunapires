@@ -1,10 +1,22 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart, Shield, CheckCircle, Users, TrendingUp, Award, Phone, MessageCircle } from "lucide-react";
+import { Heart, Shield, CheckCircle, Users, TrendingUp, Award, Phone, MessageCircle, Calendar, ArrowRight } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import bpcCircularLogo from "@assets/image_1758569899954.png";
+import type { Post } from "@shared/schema";
 
 export default function Home() {
+  // Buscar os posts mais recentes
+  const { data: posts = [], isLoading } = useQuery<Post[]>({
+    queryKey: ["/api/posts"],
+  });
+
+  // Pegar apenas os 3 posts mais recentes
+  const recentPosts = posts.slice(0, 3);
+
   return (
     <>
       {/* Hero Section */}
@@ -204,6 +216,102 @@ Nossa trajetória de 20 anos no mercado financeiro e desde 2017 empreendendo no 
           </div>
           
 
+        </div>
+      </section>
+
+      {/* Recent Blog Posts Section */}
+      <section className="py-24 bg-muted">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-6" data-testid="text-blog-title">
+              Últimos Artigos
+            </h2>
+            <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-blog-description">
+              Fique por dentro das últimas novidades sobre planos de saúde, seguros de vida e dicas importantes para sua proteção.
+            </p>
+          </div>
+
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <Card key={i} className="overflow-hidden">
+                  <div className="h-48 bg-muted-foreground/10 animate-pulse"></div>
+                  <CardContent className="p-6">
+                    <div className="h-4 bg-muted-foreground/10 animate-pulse rounded mb-4"></div>
+                    <div className="h-6 bg-muted-foreground/10 animate-pulse rounded mb-2"></div>
+                    <div className="h-4 bg-muted-foreground/10 animate-pulse rounded w-2/3"></div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : recentPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {recentPosts.map((post) => (
+                <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow duration-300 group" data-testid={`card-post-${post.id}`}>
+                  {post.imageUrls && post.imageUrls.length > 0 && (
+                    <div className="h-48 overflow-hidden">
+                      <img 
+                        src={post.imageUrls[0]} 
+                        alt={post.title || "Imagem do artigo"}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        data-testid={`img-post-${post.id}`}
+                      />
+                    </div>
+                  )}
+                  <CardContent className="p-6">
+                    <div className="flex items-center text-sm text-muted-foreground mb-3">
+                      <Calendar className="w-4 h-4 mr-2" />
+                      <span data-testid={`text-date-${post.id}`}>
+                        {format(new Date(post.createdAt), "d 'de' MMMM, yyyy", { locale: ptBR })}
+                      </span>
+                      {post.category && (
+                        <>
+                          <span className="mx-2">•</span>
+                          <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs" data-testid={`text-category-${post.id}`}>
+                            {post.category}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300" data-testid={`text-title-${post.id}`}>
+                      {post.title}
+                    </h3>
+                    {post.excerpt && (
+                      <p className="text-muted-foreground mb-4 line-clamp-3" data-testid={`text-excerpt-${post.id}`}>
+                        {post.excerpt}
+                      </p>
+                    )}
+                    {post.author && (
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground" data-testid={`text-author-${post.id}`}>
+                          Por {post.author}
+                        </span>
+                        <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform duration-300" />
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground text-lg" data-testid="text-no-posts">
+                Nenhum artigo publicado ainda. Em breve teremos conteúdo interessante para você!
+              </p>
+            </div>
+          )}
+
+          {recentPosts.length > 0 && (
+            <div className="text-center mt-12">
+              <Link href="/blog">
+                <Button variant="outline" size="lg" className="px-8 py-3 font-semibold border-2" data-testid="button-ver-todos-posts">
+                  Ver Todos os Artigos
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
