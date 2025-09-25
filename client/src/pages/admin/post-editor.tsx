@@ -97,6 +97,7 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
   });
 
   const onSubmit = (data: FormData) => {
+    console.log("Form is being submitted with data:", data);
     mutation.mutate(data);
   };
 
@@ -138,6 +139,10 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                 type="submit"
                 form="post-form"
                 disabled={mutation.isPending}
+                onClick={(e) => {
+                  console.log("Save button clicked");
+                  // Don't prevent default, let form handle it
+                }}
                 data-testid="button-save"
               >
                 <Save className="w-4 h-4 mr-2" />

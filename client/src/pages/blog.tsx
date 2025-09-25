@@ -154,7 +154,7 @@ export default function Blog() {
                 <div className="relative">
                   <img 
                     src={article.imageUrl || "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f"} 
-                    alt={article.title}
+                    alt={article.title || ""}
                     className="w-full h-48 object-cover"
                     data-testid={`img-article-${article.id}`}
                   />
