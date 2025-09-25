@@ -27,6 +27,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json({ authenticated: isAuthenticated });
   });
 
+  // Debug endpoint
+  app.get('/api/admin/debug', (req, res) => {
+    res.json({ 
+      hasSession: !!req.session,
+      sessionData: req.session,
+      isAuthenticated: (req.session as any)?.isAdminAuthenticated || false
+    });
+  });
+
   // Contact form submission (public)
   app.post("/api/contact", async (req, res) => {
     try {
