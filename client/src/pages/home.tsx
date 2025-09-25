@@ -33,35 +33,15 @@ export default function Home() {
             </p>
             
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link href="/contato">
                 <Button size="lg" className="px-12 py-4 text-lg font-semibold shadow-xl" data-testid="button-consultoria-gratuita">
                   <MessageCircle className="mr-3 h-5 w-5" />
-                  Solicitar Consultoria Gratuita
-                </Button>
-              </Link>
-              <Link href="/planos-saude">
-                <Button variant="outline" size="lg" className="px-12 py-4 text-lg font-semibold border-2" data-testid="button-cotacao">
-                  <Phone className="mr-3 h-5 w-5" />
-                  Peça sua Cotação
+                  falar com consultor
                 </Button>
               </Link>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
-              <div className="text-center" data-testid="credential-experiencia">
-                <div className="text-3xl font-display font-bold text-primary mb-2">7+</div>
-                <div className="text-sm font-medium text-muted-foreground">Anos de Experiência</div>
-              </div>
-              <div className="text-center" data-testid="credential-clientes">
-                <div className="text-3xl font-display font-bold text-primary mb-2">500+</div>
-                <div className="text-sm font-medium text-muted-foreground">Clientes Atendidos</div>
-              </div>
-              <div className="text-center" data-testid="credential-satisfacao">
-                <div className="text-3xl font-display font-bold text-primary mb-2">98%</div>
-                <div className="text-sm font-medium text-muted-foreground">Satisfação</div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -219,36 +199,10 @@ export default function Home() {
             </h2>
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-stats-description">
-              Nossa trajetória de 20 anos no mercado financeiro e desde 2017 empreendendo no mercado de seguros e planos de saúde, nos permite a prestar uma consultoria dedicada que une planejamento, transparência e soluções para sua empresa e sua família.
+Nossa trajetória de 20 anos no mercado financeiro e desde 2017 empreendendo no mercado de seguros e planos de saúde, nos permite prestar uma consultoria dedicada que une planejamento, transparência e soluções para sua empresa e sua família.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-background/80 backdrop-blur border border-primary/20 rounded-2xl p-8 text-center shadow-lg" data-testid="stat-experiencia">
-              <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <TrendingUp className="w-10 h-10 text-primary-foreground" />
-              </div>
-              <div className="text-5xl font-display font-bold text-primary mb-3">7+</div>
-              <div className="text-lg font-medium text-foreground mb-2">Anos de Experiência</div>
-              <div className="text-muted-foreground text-sm">Especialização contínua no mercado de planos de saúde</div>
-            </div>
-            <div className="bg-background/80 backdrop-blur border border-primary/20 rounded-2xl p-8 text-center shadow-lg" data-testid="stat-clientes">
-              <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <Users className="w-10 h-10 text-primary-foreground" />
-              </div>
-              <div className="text-5xl font-display font-bold text-primary mb-3">500+</div>
-              <div className="text-lg font-medium text-foreground mb-2">Clientes Atendidos</div>
-              <div className="text-muted-foreground text-sm">Famílias e empresas com proteção personalizada</div>
-            </div>
-            <div className="bg-background/80 backdrop-blur border border-primary/20 rounded-2xl p-8 text-center shadow-lg" data-testid="stat-satisfacao">
-              <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <Award className="w-10 h-10 text-primary-foreground" />
-              </div>
-              <div className="text-5xl font-display font-bold text-primary mb-3">98%</div>
-              <div className="text-lg font-medium text-foreground mb-2">Índice de Satisfação</div>
-              <div className="text-muted-foreground text-sm">Clientes que recomendam nossos serviços</div>
-            </div>
-          </div>
 
         </div>
       </section>
@@ -276,13 +230,7 @@ export default function Home() {
               <Link href="/contato">
                 <Button variant="secondary" size="lg" className="px-12 py-4 text-lg font-semibold shadow-2xl hover:scale-105 transition-all duration-300" data-testid="button-contato-agora">
                   <MessageCircle className="mr-3 h-5 w-5" />
-                  Consultoria Gratuita Agora
-                </Button>
-              </Link>
-              <Link href="/planos-saude">
-                <Button variant="outline" size="lg" className="px-12 py-4 text-lg font-semibold bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all duration-300" data-testid="button-ver-planos">
-                  <Phone className="mr-3 h-5 w-5" />
-                  Ver Planos Disponíveis
+                  falar com consultor
                 </Button>
               </Link>
             </div>

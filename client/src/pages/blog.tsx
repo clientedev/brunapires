@@ -187,28 +187,6 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-6" data-testid="text-newsletter-title">
-            Receba Conteúdo Exclusivo
-          </h2>
-          <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto" data-testid="text-newsletter-description">
-            Inscreva-se em nossa newsletter e receba dicas valiosas sobre saúde e planejamento financeiro diretamente em seu e-mail.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <input 
-              type="email" 
-              placeholder="Seu melhor e-mail"
-              className="flex-1 px-4 py-3 rounded-lg border border-border focus:ring-2 focus:ring-primary-foreground focus:border-primary-foreground"
-              data-testid="input-newsletter-email"
-            />
-            <Button variant="secondary" size="lg" className="px-6 py-3 font-semibold" data-testid="button-newsletter-subscribe">
-              Inscrever-se
-            </Button>
-          </div>
-        </div>
-      </section>
 
     </div>
   );

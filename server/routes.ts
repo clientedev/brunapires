@@ -21,6 +21,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Session check endpoint for non-Replit environments
+  app.get('/api/admin/session', (req, res) => {
+    const isAuthenticated = (req.session as any)?.isAdminAuthenticated || false;
+    res.json({ authenticated: isAuthenticated });
+  });
+
   // Contact form submission (public)
   app.post("/api/contact", async (req, res) => {
     try {
