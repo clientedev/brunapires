@@ -27,21 +27,27 @@ const getOidcConfig = memoize(
 
 export function getSession() {
   const sessionTtl = 7 * 24 * 60 * 60 * 1000; // 1 week
-  const pgStore = connectPg(session);
-  const sessionStore = new pgStore({
-    conString: process.env.DATABASE_URL,
-    createTableIfMissing: true,
-    ttl: sessionTtl,
-    tableName: "sessions",
-  });
+  
+  let sessionStore;
+  if (process.env.DATABASE_URL) {
+    const pgStore = connectPg(session);
+    sessionStore = new pgStore({
+      conString: process.env.DATABASE_URL,
+      createTableIfMissing: true,
+      ttl: sessionTtl,
+      tableName: "sessions",
+    });
+  }
+  // If no DATABASE_URL, use default memory store
+  
   return session({
-    secret: process.env.SESSION_SECRET!,
-    store: sessionStore,
+    secret: process.env.SESSION_SECRET || 'fallback-secret-key',
+    store: sessionStore, // undefined = use default memory store
     resave: false,
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: true,
+      secure: process.env.NODE_ENV === 'production',
       maxAge: sessionTtl,
     },
   });
@@ -72,9 +78,11 @@ async function upsertUser(
 export async function setupAuth(app: Express) {
   app.set("trust proxy", 1);
   
-  // Only setup session and passport if in Replit environment
+  // Always setup sessions (needed for admin login in all environments)
+  app.use(getSession());
+  
+  // Only setup passport if in Replit environment
   if (isReplitEnvironment) {
-    app.use(getSession());
     app.use(passport.initialize());
     app.use(passport.session());
 
@@ -144,8 +152,11 @@ export async function setupAuth(app: Express) {
   app.post("/api/admin/login", (req, res) => {
     const { username, password } = req.body;
     
-    // Default credentials: username "bruna.admin" and password "bruna4731"
-    if (username === "bruna.admin" && password === "bruna4731") {
+    // Get credentials from environment or use defaults
+    const adminUsername = process.env.ADMIN_USERNAME || "bruna.admin";
+    const adminPassword = process.env.ADMIN_PASSWORD || "bruna4731";
+    
+    if (username === adminUsername && password === adminPassword) {
       (req.session as any).isAdminAuthenticated = true;
       res.json({ success: true, message: "Login realizado com sucesso" });
     } else {

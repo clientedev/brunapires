@@ -81,12 +81,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json({ authenticated: isAuthenticated });
   });
 
-  // Debug endpoint
-  app.get('/api/admin/debug', (req, res) => {
+  // Debug endpoint (protected)
+  app.get('/api/admin/debug', isAuthenticated, (req, res) => {
     res.json({ 
       hasSession: !!req.session,
-      sessionData: req.session,
-      isAuthenticated: (req.session as any)?.isAdminAuthenticated || false
+      isAuthenticated: (req.session as any)?.isAdminAuthenticated || false,
+      environment: process.env.NODE_ENV || 'development'
     });
   });
 
