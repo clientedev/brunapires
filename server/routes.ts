@@ -4,17 +4,71 @@ import { storage } from "./storage";
 import { setupAuth, isAuthenticated } from "./replitAuth";
 import { insertContactSchema, insertPostSchema, updatePostSchema } from "@shared/schema";
 import { z } from "zod";
+import multer from "multer";
+import path from "path";
+import fs from "fs";
+import express from "express";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Create uploads directory if it doesn't exist
+  const uploadsDir = path.join(process.cwd(), 'uploads');
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+  }
+
+  // Configure multer for image uploads
+  const storage_multer = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, uploadsDir);
+    },
+    filename: (req, file, cb) => {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+      cb(null, 'image-' + uniqueSuffix + path.extname(file.originalname));
+    }
+  });
+
+  const upload = multer({
+    storage: storage_multer,
+    limits: {
+      fileSize: 5 * 1024 * 1024 // 5MB limit
+    },
+    fileFilter: (req, file, cb) => {
+      const allowedTypes = /jpeg|jpg|png|gif|webp/;
+      const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+      const mimetype = allowedTypes.test(file.mimetype);
+
+      if (mimetype && extname) {
+        return cb(null, true);
+      } else {
+        cb(new Error('Apenas imagens são permitidas (JPEG, PNG, GIF, WebP)'));
+      }
+    }
+  });
+
   // Auth middleware
   await setupAuth(app);
 
   // Auth routes
   app.get('/api/auth/user', isAuthenticated, async (req: any, res) => {
     try {
-      const userId = req.user.claims.sub;
-      const user = await storage.getUser(userId);
-      res.json(user);
+      // Check if user is authenticated via session (simple auth)
+      if ((req.session as any)?.isAdminAuthenticated) {
+        res.json({ 
+          email: 'admin@bpc.com', 
+          firstName: 'Admin',
+          id: 'admin' 
+        });
+        return;
+      }
+      
+      // Otherwise, try Replit OIDC auth
+      if (req.user?.claims) {
+        const userId = req.user.claims.sub;
+        const user = await storage.getUser(userId);
+        res.json(user);
+      } else {
+        res.status(401).json({ message: "Unauthorized" });
+      }
     } catch (error) {
       console.error("Error fetching user:", error);
       res.status(500).json({ message: "Failed to fetch user" });
@@ -35,6 +89,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
       isAuthenticated: (req.session as any)?.isAdminAuthenticated || false
     });
   });
+
+  // Image upload endpoint (admin only)
+  app.post('/api/admin/upload', isAuthenticated, upload.single('image'), (req, res) => {
+    try {
+      if (!req.file) {
+        return res.status(400).json({
+          success: false,
+          message: 'Nenhuma imagem foi enviada'
+        });
+      }
+
+      const imageUrl = `/uploads/${req.file.filename}`;
+      
+      res.json({
+        success: true,
+        message: 'Imagem enviada com sucesso!',
+        imageUrl: imageUrl
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: 'Erro ao fazer upload da imagem'
+      });
+    }
+  });
+
+  // Serve uploaded images
+  app.use('/uploads', (req, res, next) => {
+    // Add cache headers for images
+    res.setHeader('Cache-Control', 'public, max-age=86400'); // 1 day
+    next();
+  });
+  
+  app.use('/uploads', express.static(uploadsDir));
 
   // Contact form submission (public)
   app.post("/api/contact", async (req, res) => {

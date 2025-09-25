@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { X, Save, Eye } from "lucide-react";
+import { X, Save, Eye, Upload, Trash2 } from "lucide-react";
 import { insertPostSchema, updatePostSchema, type Post } from "@shared/schema";
 import { z } from "zod";
 
@@ -30,6 +30,8 @@ type FormData = z.infer<typeof formSchema>;
 export default function PostEditor({ post, onClose }: PostEditorProps) {
   const { toast } = useToast();
   const isEditing = !!post;
+  const [uploadedImage, setUploadedImage] = useState<string | null>(post?.imageUrl || null);
+  const [isUploading, setIsUploading] = useState(false);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -208,24 +210,98 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                       )}
                     />
 
-                    <FormField
-                      control={form.control}
-                      name="imageUrl"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>URL da Imagem</FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="https://exemplo.com/imagem.jpg"
-                              type="url"
-                              {...field}
-                              data-testid="input-image-url"
+                    <div>
+                      <FormLabel>Imagem do Post</FormLabel>
+                      <div className="space-y-4">
+                        {uploadedImage ? (
+                          <div className="relative">
+                            <img 
+                              src={uploadedImage} 
+                              alt="Preview"
+                              className="w-full max-w-md h-48 object-cover rounded border"
                             />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                            <Button
+                              type="button"
+                              variant="destructive"
+                              size="sm"
+                              className="absolute top-2 right-2"
+                              onClick={() => {
+                                setUploadedImage(null);
+                                form.setValue('imageUrl', '');
+                              }}
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </Button>
+                          </div>
+                        ) : (
+                          <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
+                            <Upload className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
+                            <p className="text-sm text-muted-foreground mb-3">
+                              Clique para selecionar uma imagem
+                            </p>
+                            <Input
+                              type="file"
+                              accept="image/*"
+                              className="hidden"
+                              id="image-upload"
+                              onChange={async (e) => {
+                                const file = e.target.files?.[0];
+                                if (!file) return;
+
+                                setIsUploading(true);
+                                try {
+                                  const formData = new FormData();
+                                  formData.append('image', file);
+
+                                  const response = await fetch('/api/admin/upload', {
+                                    method: 'POST',
+                                    credentials: 'include',
+                                    body: formData,
+                                  });
+
+                                  if (response.ok) {
+                                    const data = await response.json();
+                                    setUploadedImage(data.imageUrl);
+                                    form.setValue('imageUrl', data.imageUrl);
+                                    toast({
+                                      title: "Sucesso",
+                                      description: "Imagem enviada com sucesso!",
+                                    });
+                                  } else {
+                                    const error = await response.json();
+                                    toast({
+                                      title: "Erro",
+                                      description: error.message || "Falha ao enviar imagem",
+                                      variant: "destructive",
+                                    });
+                                  }
+                                } catch (error) {
+                                  toast({
+                                    title: "Erro",
+                                    description: "Erro de conexão ao enviar imagem",
+                                    variant: "destructive",
+                                  });
+                                } finally {
+                                  setIsUploading(false);
+                                }
+                              }}
+                            />
+                            <Button
+                              type="button"
+                              variant="outline"
+                              className="mt-2"
+                              disabled={isUploading}
+                              onClick={() => document.getElementById('image-upload')?.click()}
+                            >
+                              {isUploading ? "Enviando..." : "Selecionar Imagem"}
+                            </Button>
+                          </div>
+                        )}
+                        <p className="text-xs text-muted-foreground">
+                          Formatos aceitos: JPEG, PNG, GIF, WebP. Tamanho máximo: 5MB
+                        </p>
+                      </div>
+                    </div>
                   </form>
                 </Form>
               </CardContent>
@@ -357,10 +433,10 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                       </span>
                     )}
                   </div>
-                  {form.watch("imageUrl") && (
+                  {(uploadedImage || form.watch("imageUrl")) && (
                     <div className="mt-2">
                       <img 
-                        src={form.watch("imageUrl")} 
+                        src={uploadedImage || form.watch("imageUrl")} 
                         alt="Preview"
                         className="w-full h-20 object-cover rounded"
                         onError={(e) => {
