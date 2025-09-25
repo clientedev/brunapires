@@ -25,7 +25,7 @@ const formSchema = z.object({
   title: z.string().optional().default(""),
   excerpt: z.string().optional().default(""),
   content: z.string().optional().default(""),
-  imageUrls: z.array(z.string().url()).max(3).default([]),
+  imageUrls: z.array(z.string()).max(3).default([]),
   author: z.string().optional().default(""),
   category: z.string().optional().default(""),
   featured: z.boolean().default(false),
@@ -53,6 +53,21 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
       published: post?.published ?? true,
     },
   });
+
+  // Watch form values to check if form is valid and has changes
+  const watchedValues = form.watch();
+  const originalValues = {
+    title: post?.title || "",
+    excerpt: post?.excerpt || "",
+    content: post?.content || "",
+    imageUrls: post?.imageUrls || [],
+    author: post?.author || "",
+    category: post?.category || "",
+    featured: post?.featured || false,
+    published: post?.published ?? true,
+  };
+  const hasChanges = JSON.stringify(watchedValues) !== JSON.stringify(originalValues);
+  const isFormValid = form.formState.isValid;
 
   const mutation = useMutation({
     mutationFn: async (data: FormData) => {
@@ -137,7 +152,7 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
               <Button
                 type="submit"
                 form="post-form"
-                disabled={mutation.isPending}
+                disabled={mutation.isPending || (isEditing && !hasChanges)}
                 onClick={() => {}}
                 data-testid="button-save"
               >
@@ -239,7 +254,7 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                                   onClick={() => {
                                     const newImages = uploadedImages.filter((_, i) => i !== index);
                                     setUploadedImages(newImages);
-                                    form.setValue('imageUrls', newImages);
+                                    form.setValue('imageUrls', newImages, { shouldDirty: true, shouldValidate: true });
                                   }}
                                 >
                                   <Trash2 className="w-4 h-4" />
@@ -289,7 +304,7 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                                     const data = await response.json();
                                     const newImages = [...uploadedImages, data.imageUrl];
                                     setUploadedImages(newImages);
-                                    form.setValue('imageUrls', newImages);
+                                    form.setValue('imageUrls', newImages, { shouldDirty: true, shouldValidate: true });
                                     toast({
                                       title: "Sucesso",
                                       description: "Imagem enviada com sucesso!",
