@@ -90,6 +90,7 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
   });
 
   const onSubmit = (data: FormData) => {
+    console.log("Form submitted with data:", data);
     mutation.mutate(data);
   };
 
@@ -152,7 +153,14 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
               </CardHeader>
               <CardContent>
                 <Form {...form}>
-                  <form id="post-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <form id="post-form" onSubmit={form.handleSubmit(onSubmit, (errors) => {
+                    console.log("Form validation errors:", errors);
+                    toast({
+                      title: "Erro de validação",
+                      description: "Por favor, preencha todos os campos obrigatórios",
+                      variant: "destructive",
+                    });
+                  })} className="space-y-6">
                     <FormField
                       control={form.control}
                       name="title"
