@@ -97,7 +97,6 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
   });
 
   const onSubmit = (data: FormData) => {
-    console.log("Form is being submitted with data:", data);
     mutation.mutate(data);
   };
 
@@ -139,10 +138,7 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                 type="submit"
                 form="post-form"
                 disabled={mutation.isPending}
-                onClick={(e) => {
-                  console.log("Save button clicked");
-                  // Don't prevent default, let form handle it
-                }}
+                onClick={() => {}}
                 data-testid="button-save"
               >
                 <Save className="w-4 h-4 mr-2" />
@@ -223,33 +219,42 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                     />
 
                     <div>
-                      <FormLabel>Imagem do Post</FormLabel>
-                      <div className="space-y-4">
-                        {uploadedImage ? (
-                          <div className="relative">
-                            <img 
-                              src={uploadedImage} 
-                              alt="Preview"
-                              className="w-full max-w-md h-48 object-cover rounded border"
-                            />
-                            <Button
-                              type="button"
-                              variant="destructive"
-                              size="sm"
-                              className="absolute top-2 right-2"
-                              onClick={() => {
-                                setUploadedImage(null);
-                                form.setValue('imageUrl', '');
-                              }}
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </Button>
+                      <FormLabel>Imagens do Post (até 3)</FormLabel>
+                      <div className="mt-2 space-y-4">
+                        {/* Display uploaded images */}
+                        {uploadedImages.length > 0 && (
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {uploadedImages.map((imageUrl, index) => (
+                              <div key={index} className="relative">
+                                <img
+                                  src={imageUrl}
+                                  alt={`Imagem ${index + 1}`}
+                                  className="w-full h-32 object-cover rounded-lg"
+                                />
+                                <Button
+                                  type="button"
+                                  variant="destructive"
+                                  size="sm"
+                                  className="absolute top-2 right-2"
+                                  onClick={() => {
+                                    const newImages = uploadedImages.filter((_, i) => i !== index);
+                                    setUploadedImages(newImages);
+                                    form.setValue('imageUrls', newImages);
+                                  }}
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                </Button>
+                              </div>
+                            ))}
                           </div>
-                        ) : (
+                        )}
+                        
+                        {/* Upload new image (if less than 3) */}
+                        {uploadedImages.length < 3 && (
                           <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
                             <Upload className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
                             <p className="text-sm text-muted-foreground mb-3">
-                              Clique para selecionar uma imagem
+                              Adicionar imagem ({uploadedImages.length}/3)
                             </p>
                             <Input
                               type="file"
@@ -259,6 +264,15 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                               onChange={async (e) => {
                                 const file = e.target.files?.[0];
                                 if (!file) return;
+
+                                if (uploadedImages.length >= 3) {
+                                  toast({
+                                    title: "Limite atingido",
+                                    description: "Máximo de 3 imagens por post",
+                                    variant: "destructive",
+                                  });
+                                  return;
+                                }
 
                                 setIsUploading(true);
                                 try {
@@ -273,8 +287,9 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
 
                                   if (response.ok) {
                                     const data = await response.json();
-                                    setUploadedImage(data.imageUrl);
-                                    form.setValue('imageUrl', data.imageUrl);
+                                    const newImages = [...uploadedImages, data.imageUrl];
+                                    setUploadedImages(newImages);
+                                    form.setValue('imageUrls', newImages);
                                     toast({
                                       title: "Sucesso",
                                       description: "Imagem enviada com sucesso!",
@@ -295,6 +310,9 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                                   });
                                 } finally {
                                   setIsUploading(false);
+                                  // Reset file input
+                                  const input = document.getElementById('image-upload') as HTMLInputElement;
+                                  if (input) input.value = '';
                                 }
                               }}
                             />
@@ -309,8 +327,9 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                             </Button>
                           </div>
                         )}
+                        
                         <p className="text-xs text-muted-foreground">
-                          Formatos aceitos: JPEG, PNG, GIF, WebP. Tamanho máximo: 5MB
+                          Formatos aceitos: JPEG, PNG, GIF, WebP. Tamanho máximo: 5MB por imagem
                         </p>
                       </div>
                     </div>
@@ -445,16 +464,22 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                       </span>
                     )}
                   </div>
-                  {(uploadedImage || form.watch("imageUrl")) && (
-                    <div className="mt-2">
-                      <img 
-                        src={uploadedImage || form.watch("imageUrl")} 
-                        alt="Preview"
-                        className="w-full h-20 object-cover rounded"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                        }}
-                      />
+                  {uploadedImages.length > 0 && (
+                    <div className="mt-2 space-y-2">
+                      <p className="text-xs text-muted-foreground">Imagens do post:</p>
+                      <div className="grid grid-cols-3 gap-2">
+                        {uploadedImages.map((imageUrl, index) => (
+                          <img 
+                            key={index}
+                            src={imageUrl} 
+                            alt={`Preview ${index + 1}`}
+                            className="w-full h-12 object-cover rounded"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                            }}
+                          />
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
