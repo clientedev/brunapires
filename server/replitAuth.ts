@@ -30,7 +30,7 @@ export function getSession() {
   const pgStore = connectPg(session);
   const sessionStore = new pgStore({
     conString: process.env.DATABASE_URL,
-    createTableIfMissing: false,
+    createTableIfMissing: true,
     ttl: sessionTtl,
     tableName: "sessions",
   });
@@ -90,14 +90,21 @@ export async function setupAuth(app: Express) {
       verified(null, user);
     };
 
-    for (const domain of process.env
-      .REPLIT_DOMAINS!.split(",")) {
+    // Get domains from REPLIT_DOMAINS and add localhost for development
+    const domains = process.env.REPLIT_DOMAINS!.split(",");
+    const allDomains = [...domains, "localhost", "127.0.0.1"];
+    
+    for (const domain of allDomains) {
+      const isLocalhost = domain === "localhost" || domain === "127.0.0.1";
+      const protocol = isLocalhost ? "http" : "https";
+      const port = isLocalhost ? ":5000" : "";
+      
       const strategy = new Strategy(
         {
           name: `replitauth:${domain}`,
           config,
           scope: "openid email profile offline_access",
-          callbackURL: `https://${domain}/api/callback`,
+          callbackURL: `${protocol}://${domain}${port}/api/callback`,
         },
         verify,
       );
@@ -131,41 +138,34 @@ export async function setupAuth(app: Express) {
         );
       });
     });
-  } else {
-    // Simple password auth for non-Replit environments
-    app.use(session({
-      secret: process.env.SESSION_SECRET || 'fallback-secret-key',
-      resave: false,
-      saveUninitialized: false,
-      cookie: {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: 7 * 24 * 60 * 60 * 1000 // 1 week
-      }
-    }));
-    
-    // Simple admin login endpoint
-    app.post("/api/admin/login", (req, res) => {
-      const { password } = req.body;
-      if (password === "bruna4731") {
-        (req.session as any).isAdminAuthenticated = true;
-        res.json({ success: true, message: "Login realizado com sucesso" });
-      } else {
-        res.status(401).json({ success: false, message: "Senha incorreta" });
-      }
-    });
-    
-    app.post("/api/admin/logout", (req, res) => {
-      (req.session as any).isAdminAuthenticated = false;
-      req.session.destroy(() => {
-        res.json({ success: true, message: "Logout realizado com sucesso" });
-      });
-    });
   }
+  
+  // Always enable simple admin login as fallback (even in Replit)
+  app.post("/api/admin/login", (req, res) => {
+    const { password } = req.body;
+    if (password === "bruna4731") {
+      (req.session as any).isAdminAuthenticated = true;
+      res.json({ success: true, message: "Login realizado com sucesso" });
+    } else {
+      res.status(401).json({ success: false, message: "Senha incorreta" });
+    }
+  });
+  
+  app.post("/api/admin/logout", (req, res) => {
+    (req.session as any).isAdminAuthenticated = false;
+    req.session.destroy(() => {
+      res.json({ success: true, message: "Logout realizado com sucesso" });
+    });
+  });
 }
 
 export const isAuthenticated: RequestHandler = async (req, res, next) => {
-  // Check if we're in Replit environment
+  // Check simple session auth first (works in both Replit and non-Replit)
+  if ((req.session as any)?.isAdminAuthenticated) {
+    return next();
+  }
+  
+  // Check if we're in Replit environment for OIDC auth
   if (isReplitEnvironment) {
     // Original Replit auth logic
     const user = req.user as any;
@@ -195,11 +195,7 @@ export const isAuthenticated: RequestHandler = async (req, res, next) => {
       return;
     }
   } else {
-    // Simple session-based auth for non-Replit environments
-    if ((req.session as any)?.isAdminAuthenticated) {
-      return next();
-    } else {
-      return res.status(401).json({ message: "Unauthorized" });
-    }
+    // If no authentication method worked
+    return res.status(401).json({ message: "Unauthorized" });
   }
 };
