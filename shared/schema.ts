@@ -58,7 +58,7 @@ export const insertContactSchema = createInsertSchema(contacts).pick({
 });
 
 export const insertPostSchema = createInsertSchema(posts, {
-  imageUrls: z.array(z.string().url()).max(3, "Máximo de 3 imagens por post").optional()
+  imageUrls: z.array(z.string()).max(3, "Máximo de 3 imagens por post").optional()
 }).pick({
   title: true,
   excerpt: true,
@@ -71,7 +71,7 @@ export const insertPostSchema = createInsertSchema(posts, {
 }).partial();
 
 export const updatePostSchema = createInsertSchema(posts, {
-  imageUrls: z.array(z.string().url()).max(3, "Máximo de 3 imagens por post").optional()
+  imageUrls: z.array(z.string()).max(3, "Máximo de 3 imagens por post").optional()
 }).pick({
   title: true,
   excerpt: true,
