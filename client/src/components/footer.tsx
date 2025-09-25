@@ -23,28 +23,36 @@ export default function Footer() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ password }),
+        credentials: 'include', // Important for sessions
       });
       
-      const data = await response.json();
-      
-      if (data.success) {
-        toast({
-          title: "Login realizado",
-          description: "Redirecionando para o painel administrativo...",
-        });
-        setShowAdminLogin(false);
-        window.location.href = '/admin';
-      } else {
-        toast({
-          title: "Erro",
-          description: "Senha incorreta",
-          variant: "destructive",
-        });
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          toast({
+            title: "Login realizado",
+            description: "Redirecionando para o painel administrativo...",
+          });
+          setShowAdminLogin(false);
+          setPassword("");
+          // Delay to ensure session is set
+          setTimeout(() => {
+            window.location.href = '/admin';
+          }, 500);
+          return;
+        }
       }
-    } catch (error) {
+      
       toast({
         title: "Erro",
-        description: "Erro ao fazer login",
+        description: "Senha incorreta",
+        variant: "destructive",
+      });
+    } catch (error) {
+      console.error('Login error:', error);
+      toast({
+        title: "Erro",
+        description: "Erro ao conectar com o servidor",
         variant: "destructive",
       });
     }

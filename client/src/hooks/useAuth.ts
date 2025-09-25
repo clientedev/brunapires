@@ -16,18 +16,19 @@ export function useAuth() {
         if (response.ok) {
           return await response.json();
         }
-        throw new Error('Not authenticated');
+        return { authenticated: false };
       } catch {
-        return null;
+        return { authenticated: false };
       }
     },
     retry: false,
-    enabled: !!replitError, // Only check session if Replit auth failed
   });
 
+  // Prioritize session auth over Replit auth in non-Replit environments
   const isLoading = replitLoading || sessionLoading;
-  const user = replitUser || (sessionCheck?.authenticated ? { email: 'admin', firstName: 'Admin' } : null);
-  const isAuthenticated = !!replitUser || !!sessionCheck?.authenticated;
+  const isSessionAuth = sessionCheck?.authenticated;
+  const user = replitUser || (isSessionAuth ? { email: 'admin', firstName: 'Admin' } : null);
+  const isAuthenticated = !!replitUser || !!isSessionAuth;
 
   return {
     user,
