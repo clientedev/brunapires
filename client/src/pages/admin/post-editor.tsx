@@ -21,8 +21,15 @@ interface PostEditorProps {
   onClose: () => void;
 }
 
-const formSchema = insertPostSchema.extend({
-  imageUrl: z.string().url().optional().or(z.literal("")),
+const formSchema = z.object({
+  title: z.string().optional().default(""),
+  excerpt: z.string().optional().default(""),
+  content: z.string().optional().default(""),
+  imageUrl: z.string().url().optional().or(z.literal("")).default(""),
+  author: z.string().optional().default(""),
+  category: z.string().optional().default(""),
+  featured: z.boolean().default(false),
+  published: z.boolean().default(true),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -90,7 +97,6 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
   });
 
   const onSubmit = (data: FormData) => {
-    console.log("Form submitted with data:", data);
     mutation.mutate(data);
   };
 
@@ -153,20 +159,13 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
               </CardHeader>
               <CardContent>
                 <Form {...form}>
-                  <form id="post-form" onSubmit={form.handleSubmit(onSubmit, (errors) => {
-                    console.log("Form validation errors:", errors);
-                    toast({
-                      title: "Erro de validação",
-                      description: "Por favor, preencha todos os campos obrigatórios",
-                      variant: "destructive",
-                    });
-                  })} className="space-y-6">
+                  <form id="post-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <FormField
                       control={form.control}
                       name="title"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Título *</FormLabel>
+                          <FormLabel>Título</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Digite o título do post"
@@ -184,7 +183,7 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                       name="excerpt"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Resumo *</FormLabel>
+                          <FormLabel>Resumo</FormLabel>
                           <FormControl>
                             <Textarea 
                               placeholder="Escreva um resumo atrativo do post"
@@ -203,7 +202,7 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                       name="content"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Conteúdo *</FormLabel>
+                          <FormLabel>Conteúdo</FormLabel>
                           <FormControl>
                             <Textarea 
                               placeholder="Escreva o conteúdo completo do post..."
@@ -330,7 +329,7 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                     name="author"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Autor *</FormLabel>
+                        <FormLabel>Autor</FormLabel>
                         <FormControl>
                           <Input 
                             placeholder="Nome do autor"
@@ -348,7 +347,7 @@ export default function PostEditor({ post, onClose }: PostEditorProps) {
                     name="category"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Categoria *</FormLabel>
+                        <FormLabel>Categoria</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
                             <SelectTrigger data-testid="select-category">

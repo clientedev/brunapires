@@ -37,12 +37,12 @@ export const contacts = pgTable("contacts", {
 
 export const posts = pgTable("posts", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  title: text("title").notNull(),
-  excerpt: text("excerpt").notNull(),
-  content: text("content").notNull(),
+  title: text("title").default(""),
+  excerpt: text("excerpt").default(""),
+  content: text("content").default(""),
   imageUrl: text("image_url"),
-  author: text("author").notNull(),
-  category: text("category").notNull(),
+  author: text("author").default(""),
+  category: text("category").default(""),
   featured: boolean("featured").default(false),
   published: boolean("published").default(true),
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -66,7 +66,7 @@ export const insertPostSchema = createInsertSchema(posts).pick({
   category: true,
   featured: true,
   published: true,
-});
+}).partial();
 
 export const updatePostSchema = createInsertSchema(posts).pick({
   title: true,
@@ -77,7 +77,7 @@ export const updatePostSchema = createInsertSchema(posts).pick({
   category: true,
   featured: true,
   published: true,
-});
+}).partial();
 
 export type UpsertUser = typeof users.$inferInsert;
 export type User = typeof users.$inferSelect;
