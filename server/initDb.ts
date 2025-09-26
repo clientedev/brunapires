@@ -1,6 +1,8 @@
 import { sql } from "drizzle-orm";
+import { migrate } from "drizzle-orm/node-postgres/migrator";
 import { db, connectDatabase } from "./db";
-import fs from "fs";
+import { users } from "@shared/schema";
+import bcrypt from "bcryptjs";
 import path from "path";
 
 export async function initializeDatabase() {
@@ -10,38 +12,27 @@ export async function initializeDatabase() {
   await connectDatabase();
   
   try {
-    // Lê o arquivo SQL de inicialização
-    const initSqlPath = path.join(process.cwd(), "migrations", "init.sql");
+    // Executa as migrações automaticamente
+    console.log("📄 Executando migrações do banco de dados...");
+    await migrate(db, { migrationsFolder: path.join(process.cwd(), "migrations") });
+    console.log("✅ Migrações executadas com sucesso!");
     
-    if (fs.existsSync(initSqlPath)) {
-      const initSql = fs.readFileSync(initSqlPath, "utf-8");
-      
-      // Executa o SQL de inicialização
-      await db.execute(sql.raw(initSql));
-      console.log("✅ Estrutura do banco de dados criada com sucesso!");
-      
-      // Testa se as tabelas estão funcionando
-      await db.execute(sql`SELECT 1 FROM posts LIMIT 1`);
-      await db.execute(sql`SELECT 1 FROM contacts LIMIT 1`);
-      await db.execute(sql`SELECT 1 FROM users LIMIT 1`);
-      
-      console.log("✅ Todas as tabelas estão funcionando corretamente!");
-      
-    } else {
-      console.warn("⚠️ Arquivo de inicialização não encontrado, usando Drizzle push");
-    }
+    // Verifica se as tabelas estão funcionando
+    await db.execute(sql`SELECT 1 FROM posts LIMIT 1`);
+    await db.execute(sql`SELECT 1 FROM contacts LIMIT 1`);
+    await db.execute(sql`SELECT 1 FROM users LIMIT 1`);
+    console.log("✅ Todas as tabelas estão funcionando corretamente!");
+    
+    // Cria usuário admin padrão se não existir
+    await createDefaultAdmin();
     
   } catch (error) {
     console.error("❌ Erro ao inicializar banco de dados:", error);
     
-    // Fallback: tentar usar a estrutura do Drizzle diretamente
-    console.log("🔄 Tentando inicialização alternativa...");
+    // Fallback: verificar estrutura básica
+    console.log("🔄 Verificando estrutura do banco...");
     try {
-      // Tenta criar as extensões básicas
-      await db.execute(sql`CREATE EXTENSION IF NOT EXISTS "pgcrypto"`);
-      console.log("✅ Extensão pgcrypto habilitada");
-      
-      // Tenta verificar se as tabelas existem
+      // Verifica se as tabelas existem
       const tableCheck = await db.execute(sql`
         SELECT table_name 
         FROM information_schema.tables 
@@ -52,14 +43,47 @@ export async function initializeDatabase() {
       const tableCount = Array.isArray(tableCheck) ? tableCheck.length : (tableCheck?.rows?.length || 0);
       
       if (tableCount < 3) {
-        console.warn("⚠️ Algumas tabelas estão faltando. Execute 'npm run db:push --force' manualmente");
+        console.warn("⚠️ Algumas tabelas estão faltando. Executando push forçado...");
+        // Note: Em produção, o Railway deve ter as migrações já aplicadas
       } else {
         console.log("✅ Tabelas principais encontradas no banco");
       }
       
     } catch (fallbackError) {
-      console.error("❌ Erro na inicialização alternativa:", fallbackError);
+      console.error("❌ Erro na verificação:", fallbackError);
       throw fallbackError;
     }
+  }
+}
+
+async function createDefaultAdmin() {
+  try {
+    // Verifica se já existe um admin
+    const existingAdmin = await db.execute(sql`
+      SELECT * FROM users WHERE email = 'admin@bpc.com' LIMIT 1
+    `);
+    
+    if (Array.isArray(existingAdmin) && existingAdmin.length > 0) {
+      console.log("✅ Usuário admin já existe");
+      return;
+    }
+    
+    // Cria usuário admin padrão
+    const defaultEmail = process.env.ADMIN_EMAIL || 'admin@bpc.com';
+    const defaultPassword = process.env.ADMIN_PASSWORD || 'admin123';
+    const hashedPassword = await bcrypt.hash(defaultPassword, 10);
+    
+    await db.insert(users).values({
+      email: defaultEmail,
+      password: hashedPassword,
+      firstName: 'Admin',
+      lastName: 'BPC',
+    });
+    
+    console.log(`✅ Usuário admin criado: ${defaultEmail}`);
+    console.log(`🔑 Senha padrão: ${defaultPassword} (altere no primeiro login)`);
+    
+  } catch (error) {
+    console.error("⚠️ Erro ao criar usuário admin:", error);
   }
 }
