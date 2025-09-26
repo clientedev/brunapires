@@ -1,10 +1,13 @@
 import { sql } from "drizzle-orm";
-import { db } from "./db";
+import { db, connectDatabase } from "./db";
 import fs from "fs";
 import path from "path";
 
 export async function initializeDatabase() {
   console.log("🚀 Inicializando estrutura do banco de dados...");
+  
+  // Conecta ao banco primeiro
+  await connectDatabase();
   
   try {
     // Lê o arquivo SQL de inicialização
