@@ -1,8 +1,8 @@
 import { sql } from "drizzle-orm";
-import { migrate } from "drizzle-orm/node-postgres/migrator";
 import { db, connectDatabase } from "./db";
 import { users } from "@shared/schema";
 import bcrypt from "bcryptjs";
+import fs from "fs";
 import path from "path";
 
 export async function initializeDatabase() {
@@ -12,12 +12,33 @@ export async function initializeDatabase() {
   await connectDatabase();
   
   try {
-    // Executa as migrações automaticamente
-    console.log("📄 Executando migrações do banco de dados...");
-    await migrate(db, { migrationsFolder: path.join(process.cwd(), "migrations") });
-    console.log("✅ Migrações executadas com sucesso!");
+    // Verifica se as tabelas principais existem
+    console.log("📄 Verificando estrutura do banco de dados...");
+    const tableCheck = await db.execute(sql`
+      SELECT table_name 
+      FROM information_schema.tables 
+      WHERE table_schema = 'public' 
+      AND table_name IN ('posts', 'contacts', 'users', 'sessions')
+    `);
     
-    // Verifica se as tabelas estão funcionando
+    const existingTables = Array.isArray(tableCheck) ? 
+      tableCheck.map((row: any) => row.table_name) : 
+      (tableCheck?.rows?.map((row: any) => row.table_name) || []);
+    
+    console.log(`📊 Tabelas encontradas: ${existingTables.join(', ')}`);
+    
+    // Se não temos todas as tabelas, executa as migrações
+    if (existingTables.length < 4) {
+      console.log("🔧 Aplicando migrações...");
+      await applyMigrationsManually();
+    } else {
+      console.log("✅ Todas as tabelas já existem");
+    }
+    
+    // Verifica se o campo password existe na tabela users
+    await ensurePasswordField();
+    
+    // Testa se as tabelas estão funcionando
     await db.execute(sql`SELECT 1 FROM posts LIMIT 1`);
     await db.execute(sql`SELECT 1 FROM contacts LIMIT 1`);
     await db.execute(sql`SELECT 1 FROM users LIMIT 1`);
@@ -28,31 +49,70 @@ export async function initializeDatabase() {
     
   } catch (error) {
     console.error("❌ Erro ao inicializar banco de dados:", error);
-    
-    // Fallback: verificar estrutura básica
-    console.log("🔄 Verificando estrutura do banco...");
-    try {
-      // Verifica se as tabelas existem
-      const tableCheck = await db.execute(sql`
-        SELECT table_name 
-        FROM information_schema.tables 
-        WHERE table_schema = 'public' 
-        AND table_name IN ('posts', 'contacts', 'users')
-      `);
+    throw error;
+  }
+}
+
+async function applyMigrationsManually() {
+  console.log("🔧 Executando migrações manuais...");
+  
+  try {
+    // Aplica a primeira migração (criar tabelas)
+    const migration1Path = path.join(process.cwd(), "migrations", "0000_redundant_mister_sinister.sql");
+    if (fs.existsSync(migration1Path)) {
+      const migration1Sql = fs.readFileSync(migration1Path, "utf-8");
       
-      const tableCount = Array.isArray(tableCheck) ? tableCheck.length : (tableCheck?.rows?.length || 0);
+      // Divide as declarações SQL e executa uma por vez
+      const statements = migration1Sql.split('-->').filter(stmt => stmt.trim() && !stmt.includes('statement-breakpoint'));
       
-      if (tableCount < 3) {
-        console.warn("⚠️ Algumas tabelas estão faltando. Executando push forçado...");
-        // Note: Em produção, o Railway deve ter as migrações já aplicadas
-      } else {
-        console.log("✅ Tabelas principais encontradas no banco");
+      for (const statement of statements) {
+        const cleanStatement = statement.trim();
+        if (cleanStatement) {
+          try {
+            await db.execute(sql.raw(cleanStatement));
+            console.log(`✅ Executado: ${cleanStatement.substring(0, 50)}...`);
+          } catch (error: any) {
+            if (error.code === '42P07') { // table already exists
+              console.log(`⚠️ Tabela já existe: ${cleanStatement.substring(0, 50)}...`);
+            } else {
+              throw error;
+            }
+          }
+        }
       }
-      
-    } catch (fallbackError) {
-      console.error("❌ Erro na verificação:", fallbackError);
-      throw fallbackError;
     }
+    
+    console.log("✅ Migrações básicas aplicadas");
+    
+  } catch (error) {
+    console.error("❌ Erro nas migrações manuais:", error);
+    throw error;
+  }
+}
+
+async function ensurePasswordField() {
+  try {
+    // Verifica se o campo password existe
+    const columnCheck = await db.execute(sql`
+      SELECT column_name 
+      FROM information_schema.columns 
+      WHERE table_name = 'users' AND column_name = 'password'
+    `);
+    
+    const hasPasswordField = Array.isArray(columnCheck) ? 
+      columnCheck.length > 0 : 
+      (columnCheck?.rows?.length || 0) > 0;
+    
+    if (!hasPasswordField) {
+      console.log("🔧 Adicionando campo password à tabela users...");
+      await db.execute(sql`ALTER TABLE "users" ADD COLUMN "password" varchar`);
+      console.log("✅ Campo password adicionado");
+    } else {
+      console.log("✅ Campo password já existe");
+    }
+    
+  } catch (error) {
+    console.error("⚠️ Erro ao verificar campo password:", error);
   }
 }
 
