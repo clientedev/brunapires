@@ -22,9 +22,10 @@ export async function connectDatabase() {
     await client.connect();
     console.log("✅ Conectado ao banco de dados PostgreSQL");
   } catch (error: any) {
-    if (error.code !== 'ECONNREFUSED' && !error.message.includes('already connected')) {
+    if (error.message && error.message.includes('already connected')) {
       console.log("✅ Banco de dados já conectado");
     } else {
+      console.error("❌ Erro na conexão com o banco:", error);
       throw error;
     }
   }

@@ -120,28 +120,39 @@ async function createDefaultAdmin() {
   try {
     // Verifica se já existe um admin
     const existingAdmin = await db.execute(sql`
-      SELECT * FROM users WHERE email = 'admin@bpc.com' LIMIT 1
+      SELECT * FROM users WHERE email = 'bruna.admin' LIMIT 1
     `);
     
-    if (Array.isArray(existingAdmin) && existingAdmin.length > 0) {
+    const hasExistingAdmin = existingAdmin.rows && existingAdmin.rows.length > 0;
+    
+    if (hasExistingAdmin) {
       console.log("✅ Usuário admin já existe");
       return;
     }
     
     // Cria usuário admin padrão
-    const defaultEmail = process.env.ADMIN_EMAIL || 'admin@bpc.com';
-    const defaultPassword = process.env.ADMIN_PASSWORD || 'admin123';
+    const defaultEmail = process.env.ADMIN_EMAIL || 'bruna.admin';
+    const defaultPassword = process.env.ADMIN_PASSWORD || '4731bruna';
     const hashedPassword = await bcrypt.hash(defaultPassword, 10);
     
-    await db.insert(users).values({
-      email: defaultEmail,
-      password: hashedPassword,
-      firstName: 'Admin',
-      lastName: 'BPC',
-    });
-    
-    console.log(`✅ Usuário admin criado: ${defaultEmail}`);
-    console.log(`🔑 Senha padrão: ${defaultPassword} (altere no primeiro login)`);
+    try {
+      await db.insert(users).values({
+        email: defaultEmail,
+        password: hashedPassword,
+        firstName: 'Bruna',
+        lastName: 'Admin',
+      });
+      
+      console.log(`✅ Usuário admin criado: ${defaultEmail}`);
+      console.log(`🔑 Senha padrão: ${defaultPassword} (altere no primeiro login)`);
+      
+    } catch (insertError: any) {
+      if (insertError.code === '23505') { // unique constraint violation
+        console.log("✅ Usuário admin já existe (constraint)");
+      } else {
+        throw insertError;
+      }
+    }
     
   } catch (error) {
     console.error("⚠️ Erro ao criar usuário admin:", error);
