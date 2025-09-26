@@ -30,7 +30,12 @@ export async function initializeDatabase() {
     // Se não temos todas as tabelas, executa as migrações
     if (existingTables.length < 4) {
       console.log("🔧 Aplicando migrações...");
-      await applyMigrationsManually();
+      try {
+        await applyMigrationsManually();
+      } catch (migrationError) {
+        console.error("❌ Erro nas migrações, tentando criação manual das tabelas...", migrationError);
+        await createTablesManually();
+      }
     } else {
       console.log("✅ Todas as tabelas já existem");
     }
@@ -57,36 +62,131 @@ async function applyMigrationsManually() {
   console.log("🔧 Executando migrações manuais...");
   
   try {
-    // Aplica a primeira migração (criar tabelas)
-    const migration1Path = path.join(process.cwd(), "migrations", "0000_redundant_mister_sinister.sql");
-    if (fs.existsSync(migration1Path)) {
-      const migration1Sql = fs.readFileSync(migration1Path, "utf-8");
+    // Lista todos os arquivos de migração
+    const migrationsDir = path.join(process.cwd(), "migrations");
+    const migrationFiles = fs.readdirSync(migrationsDir)
+      .filter(file => file.endsWith('.sql'))
+      .sort(); // Garante ordem correta
+    
+    console.log(`📁 Arquivos de migração encontrados: ${migrationFiles.join(', ')}`);
+    
+    for (const migrationFile of migrationFiles) {
+      console.log(`📄 Processando: ${migrationFile}`);
+      const migrationPath = path.join(migrationsDir, migrationFile);
+      const migrationSql = fs.readFileSync(migrationPath, "utf-8");
       
-      // Divide as declarações SQL e executa uma por vez
-      const statements = migration1Sql.split('-->').filter(stmt => stmt.trim() && !stmt.includes('statement-breakpoint'));
+      // Divide as declarações SQL corretamente
+      const statements = migrationSql
+        .split('-- statement-breakpoint')
+        .map(stmt => stmt.replace(/--.*$/gm, '').trim())
+        .filter(stmt => stmt.length > 0);
       
       for (const statement of statements) {
-        const cleanStatement = statement.trim();
-        if (cleanStatement) {
-          try {
-            await db.execute(sql.raw(cleanStatement));
-            console.log(`✅ Executado: ${cleanStatement.substring(0, 50)}...`);
-          } catch (error: any) {
-            if (error.code === '42P07') { // table already exists
-              console.log(`⚠️ Tabela já existe: ${cleanStatement.substring(0, 50)}...`);
-            } else {
-              throw error;
-            }
+        try {
+          await db.execute(sql.raw(statement));
+          const preview = statement.replace(/\s+/g, ' ').substring(0, 60);
+          console.log(`✅ Executado: ${preview}...`);
+        } catch (error: any) {
+          if (error.code === '42P07') { // table already exists
+            const preview = statement.replace(/\s+/g, ' ').substring(0, 60);
+            console.log(`⚠️ Já existe: ${preview}...`);
+          } else {
+            console.error(`❌ Erro executando: ${statement.substring(0, 60)}...`);
+            console.error('Erro:', error.message);
+            throw error;
           }
         }
       }
     }
     
-    console.log("✅ Migrações básicas aplicadas");
+    console.log("✅ Todas as migrações aplicadas");
     
   } catch (error) {
     console.error("❌ Erro nas migrações manuais:", error);
     throw error;
+  }
+}
+
+async function createTablesManually() {
+  console.log("🛠️ Criando tabelas manualmente...");
+  
+  const tableDefinitions = [
+    {
+      name: 'contacts',
+      sql: `
+        CREATE TABLE IF NOT EXISTS "contacts" (
+          "id" varchar PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+          "name" text NOT NULL,
+          "email" text NOT NULL,
+          "phone" text NOT NULL,
+          "service" text NOT NULL,
+          "message" text,
+          "created_at" timestamp DEFAULT now() NOT NULL
+        );
+      `
+    },
+    {
+      name: 'posts',
+      sql: `
+        CREATE TABLE IF NOT EXISTS "posts" (
+          "id" varchar PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+          "title" text DEFAULT '',
+          "excerpt" text DEFAULT '',
+          "content" text DEFAULT '',
+          "image_urls" text[] DEFAULT '{}',
+          "author" text DEFAULT '',
+          "category" text DEFAULT '',
+          "featured" boolean DEFAULT false,
+          "published" boolean DEFAULT true,
+          "created_at" timestamp DEFAULT now() NOT NULL,
+          "updated_at" timestamp DEFAULT now() NOT NULL
+        );
+      `
+    },
+    {
+      name: 'sessions',
+      sql: `
+        CREATE TABLE IF NOT EXISTS "sessions" (
+          "sid" varchar PRIMARY KEY NOT NULL,
+          "sess" jsonb NOT NULL,
+          "expire" timestamp NOT NULL
+        );
+      `
+    },
+    {
+      name: 'users',
+      sql: `
+        CREATE TABLE IF NOT EXISTS "users" (
+          "id" varchar PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+          "email" varchar UNIQUE,
+          "password" varchar,
+          "first_name" varchar,
+          "last_name" varchar,
+          "profile_image_url" varchar,
+          "created_at" timestamp DEFAULT now(),
+          "updated_at" timestamp DEFAULT now()
+        );
+      `
+    }
+  ];
+  
+  for (const table of tableDefinitions) {
+    try {
+      await db.execute(sql.raw(table.sql));
+      console.log(`✅ Tabela "${table.name}" criada/verificada`);
+    } catch (error: any) {
+      console.error(`❌ Erro ao criar tabela "${table.name}":`, error.message);
+    }
+  }
+  
+  // Cria índices necessários
+  try {
+    await db.execute(sql.raw(`
+      CREATE INDEX IF NOT EXISTS "IDX_session_expire" ON "sessions" USING btree ("expire");
+    `));
+    console.log("✅ Índices criados");
+  } catch (error: any) {
+    console.log("⚠️ Erro ao criar índices:", error.message);
   }
 }
 
