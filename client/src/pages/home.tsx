@@ -49,7 +49,7 @@ export default function Home() {
               <Link href="/contato">
                 <Button size="lg" className="px-12 py-4 text-lg font-semibold shadow-xl" data-testid="button-consultoria-gratuita">
                   <MessageCircle className="mr-3 h-5 w-5" />
-                  falar com consultor
+                  Falar com consultor
                 </Button>
               </Link>
             </div>
@@ -120,7 +120,7 @@ export default function Home() {
                 
                 <Link href="/contato">
                   <Button size="lg" className="px-8 py-3 font-semibold" data-testid="button-consultor-especializado">
-                    falar com consultor
+                    Falar com consultor
                   </Button>
                 </Link>
               </div>
@@ -192,7 +192,7 @@ export default function Home() {
                 
                 <Link href="/contato">
                   <Button variant="outline" size="lg" className="px-8 py-3 font-semibold border-2" data-testid="button-saiba-mais-protecao">
-                    falar com consultor
+                    Falar com consultor
                   </Button>
                 </Link>
               </div>
@@ -338,7 +338,7 @@ Nossa trajetória de 20 anos no mercado financeiro e desde 2017 empreendendo no 
               <Link href="/contato">
                 <Button variant="secondary" size="lg" className="px-12 py-4 text-lg font-semibold shadow-2xl hover:scale-105 transition-all duration-300" data-testid="button-contato-agora">
                   <MessageCircle className="mr-3 h-5 w-5" />
-                  falar com consultor
+                  Falar com consultor
                 </Button>
               </Link>
             </div>

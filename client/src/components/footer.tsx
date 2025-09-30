@@ -76,7 +76,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-background/70 text-sm">
-              Desde 2018 oferecendo consultoria especializada em planos de saúde, com transparência e comprometimento total.
+              Desde 2017 oferecendo consultoria especializada em planos de saúde, com transparência e comprometimento total.
             </p>
           </div>
           <div>
@@ -124,6 +124,7 @@ export default function Footer() {
             <div className="space-y-2 text-sm text-background/70">
               <p data-testid="text-footer-email">bpcplanejamento@outlook.com</p>
               <p data-testid="text-footer-horario">Segunda a Sexta: 8h às 18h</p>
+              <p data-testid="text-footer-endereco">Av. Marques de S. Vicente, 2219 - cj 304 e 306 - Perdizes</p>
               <p data-testid="text-footer-atendimento">Atendimento online</p>
             </div>
           </div>
