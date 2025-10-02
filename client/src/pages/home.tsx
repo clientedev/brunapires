@@ -32,15 +32,17 @@ export default function Home() {
               />
             </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-foreground mb-8" data-testid="text-hero-title">
-              <span className="text-primary">Planos de Saúde e Seguros de Vida</span><br />
-              sob medida
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-foreground mb-8 leading-tight" data-testid="text-hero-title">
+              Planos de Saúde e<br />
+              <span className="text-primary">Seguros de Vida</span><br />
+              <span className="text-4xl sm:text-5xl lg:text-6xl">sob medida</span>
             </h1>
             
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
             
-            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed" data-testid="text-hero-description">
-              Consultoria para pessoas e empresas, com foco em proteção e tranquilidade.
+            <p className="text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed font-medium" data-testid="text-hero-description">
+              Consultoria para pessoas e empresas,<br />
+              com foco em proteção e tranquilidade.
             </p>
             
             
