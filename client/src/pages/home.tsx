@@ -21,8 +21,8 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="pt-20 min-h-screen flex items-center bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto text-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="max-w-6xl mx-auto text-center">
             <div className="flex justify-center mb-8">
               <img 
                 src={bpcCircularLogo} 
@@ -61,8 +61,8 @@ export default function Home() {
 
       {/* Services Overview */}
       <section className="py-24 bg-muted">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center mb-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="max-w-5xl mx-auto text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-8" data-testid="text-services-title">
               Nossos Serviços
             </h2>
@@ -205,13 +205,13 @@ export default function Home() {
       {/* Stats Section */}
       <section className="py-24 bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-6" data-testid="text-stats-title">
               Por que Escolher a BPC?
             </h2>
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-stats-description">
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed" data-testid="text-stats-description">
               Nossa trajetória de 20 anos no mercado financeiro e desde 2017 empreendendo no mercado de seguros e planos de saúde, nos permite prestar uma consultoria dedicada que une planejamento, transparência e soluções para sua empresa e sua família.
             </p>
           </div>
@@ -242,7 +242,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-16 max-w-4xl mx-auto">
+          <div className="mt-16 max-w-6xl mx-auto">
             <div className="bg-primary/5 rounded-2xl p-8 border border-primary/20">
               <h3 className="text-2xl font-display font-bold text-foreground mb-6 text-center">
                 Nossa Metodologia Consultiva
@@ -278,7 +278,7 @@ export default function Home() {
 
       {/* Recent Blog Posts Section */}
       <section className="py-24 bg-muted">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-6" data-testid="text-blog-title">
               Últimos Artigos
@@ -375,8 +375,8 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-br from-primary via-primary to-primary/90 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5"></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="max-w-4xl mx-auto">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl text-center relative z-10">
+          <div className="max-w-5xl mx-auto">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-foreground/10 backdrop-blur rounded-full mb-6">
               <Heart className="w-8 h-8 text-primary-foreground" />
             </div>
