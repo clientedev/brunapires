@@ -33,15 +33,14 @@ export default function Home() {
             </div>
             
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-foreground mb-8" data-testid="text-hero-title">
-              Planejamento consultivo em<br />
-              <span className="text-primary">Planos de Saúde e Seguros de Vida</span><br />
-              <span className="text-3xl sm:text-4xl lg:text-5xl">— do individual ao corporativo.</span>
+              Planejamento estratégico em<br />
+              <span className="text-primary">Saúde e Seguros de Vida</span>
             </h1>
             
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
             
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed" data-testid="text-hero-description">
-              Com experiência e visão estratégica, ajudamos negócios e pessoas a cuidarem do que mais importa: <strong className="text-foreground">segurança, bem-estar e continuidade</strong>.
+              Soluções personalizadas para pessoas e empresas, garantindo proteção e tranquilidade.
             </p>
             
             
@@ -63,10 +62,10 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-8" data-testid="text-services-title">
-              PLANOS DE SAÚDE
+              Nossos Serviços
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed" data-testid="text-services-description">
-              Um plano de saúde não é apenas um benefício, é um investimento estratégico. Empresas que oferecem um plano de saúde conquistam mais engajamento e reduzem rotatividade. Na BPC oferecemos consultoria completa, desde a escolha do plano ideal até a conscientização dos colaboradores para um uso responsável.<br /><br /><strong>Sua equipe saudável, sua empresa sustentável.</strong>
+              Oferecemos consultoria especializada em planos de saúde e seguros de vida, com soluções que protegem pessoas e fortalecem empresas.
             </p>
           </div>
           
@@ -76,7 +75,7 @@ export default function Home() {
               <div className="bg-primary/5 rounded-2xl p-8">
                 <h3 className="text-3xl font-display font-bold text-foreground mb-6">Planos de Saúde</h3>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Um plano de saúde não é apenas um benefício, é um investimento estratégico. Empresas que oferecem um plano de saúde conquistam mais engajamento e reduzem rotatividade. Na BPC oferecemos consultoria completa, desde a escolha do plano ideal até a conscientização dos colaboradores para um uso responsável.
+                  Um plano de saúde não é apenas um benefício, é um investimento estratégico. Empresas que oferecem um plano de saúde conquistam mais engajamento e reduzem rotatividade. Na BPC oferecemos consultoria completa, desde a escolha do plano ideal até a conscientização dos colaboradores para um uso responsável.<br /><br /><strong className="text-foreground">Sua equipe saudável, sua empresa sustentável.</strong>
                 </p>
                 
                 <div className="bg-primary/5 rounded-xl p-4 mb-6">

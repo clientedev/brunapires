@@ -23,8 +23,14 @@ export default function About() {
             <div className="w-24 h-1 bg-primary mx-auto mb-12"></div>
             
             <div className="max-w-4xl mx-auto mb-12">
-              <p className="text-xl text-muted-foreground mb-12 leading-relaxed" data-testid="text-about-history">
-                Desde 2017, a BPC Planejamento e Consultoria oferece soluções em seguros de vida e planos de saúde, unindo experiência de mercado e visão estratégica. Nosso trabalho é consultivo e personalizado, com foco em proteger pessoas, fortalecer empresas e garantir resultados sustentáveis.
+              <p className="text-2xl text-foreground font-semibold mb-6 leading-relaxed" data-testid="text-about-intro">
+                Planejamento, proteção e resultados sustentáveis
+              </p>
+              <p className="text-xl text-muted-foreground mb-8 leading-relaxed" data-testid="text-about-history">
+                Desde 2017, a BPC Planejamento e Consultoria oferece soluções completas em planos de saúde e seguros de vida. Com experiência de 20 anos no mercado financeiro, trazemos uma visão estratégica única para cuidar do que mais importa: a proteção de pessoas e a sustentabilidade de empresas.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed" data-testid="text-about-approach">
+                Nosso trabalho vai além da simples intermediação. Realizamos consultoria dedicada e personalizada, analisando cada caso com profundidade para entregar soluções que realmente fazem sentido para sua realidade — seja você uma pessoa buscando proteção familiar ou uma empresa estruturando benefícios para seus colaboradores.
               </p>
             </div>
               
@@ -32,23 +38,23 @@ export default function About() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="bg-muted rounded-2xl p-8" data-testid="diferencial-experiencia">
                 <div className="text-5xl mb-6">💼</div>
-                <h4 className="text-xl font-display font-semibold text-foreground mb-4">EXPERIÊNCIA SÓLIDA</h4>
+                <h4 className="text-xl font-display font-semibold text-foreground mb-4">Experiência Sólida</h4>
                 <p className="text-muted-foreground leading-relaxed">
-                  desde 2005 no mercado financeiro e desde 2017 empreendendo no setor de seguros e saúde.
+                  20 anos no mercado financeiro e 7 anos especializados em seguros e planos de saúde. Nossa trajetória garante visão estratégica e soluções consistentes.
                 </p>
               </div>
               <div className="bg-muted rounded-2xl p-8" data-testid="diferencial-transparencia">
                 <div className="text-5xl mb-6">🔍</div>
-                <h4 className="text-xl font-display font-semibold text-foreground mb-4">TRANSPARÊNCIA</h4>
+                <h4 className="text-xl font-display font-semibold text-foreground mb-4">Transparência Total</h4>
                 <p className="text-muted-foreground leading-relaxed">
-                  construímos relacionamentos de longo prazo baseados em clareza e ética.
+                  Explicamos cada detalhe, sem letras miúdas ou surpresas. Construímos relacionamentos de longo prazo baseados em clareza, ética e confiança.
                 </p>
               </div>
               <div className="bg-muted rounded-2xl p-8" data-testid="diferencial-protecao">
                 <div className="text-5xl mb-6">🛡️</div>
-                <h4 className="text-xl font-display font-semibold text-foreground mb-4">PROTEÇÃO COMPLETA</h4>
+                <h4 className="text-xl font-display font-semibold text-foreground mb-4">Consultoria Completa</h4>
                 <p className="text-muted-foreground leading-relaxed">
-                  atuamos em planos de saúde e seguros de vida, sempre com visão de planejamento.
+                  Atuamos em planos de saúde e seguros de vida com visão de planejamento. Acompanhamos você antes, durante e após a contratação.
                 </p>
               </div>
             </div>
