@@ -14,52 +14,8 @@ export default function Blog() {
     queryKey: ["/api/posts/featured"],
   });
 
-  // Fallback posts for display if no real posts exist
-  const fallbackArticles = [
-    {
-      id: "1",
-      title: "A Importância da Prevenção na Saúde",
-      excerpt: "Descubra como investir em prevenção pode economizar recursos e garantir melhor qualidade de vida para você e sua família.",
-      imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
-      author: "Dr. Maria Silva",
-      createdAt: "2025-01-15T10:00:00Z",
-      category: "Saúde Preventiva",
-      featured: true,
-      published: true,
-      content: "",
-      updatedAt: "2025-01-15T10:00:00Z"
-    },
-    {
-      id: "2",
-      title: "Plano de Saúde para Empresários",
-      excerpt: "Guia completo para empresários escolherem o melhor plano de saúde para si e seus funcionários com dicas práticas.",
-      imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
-      author: "Carlos Santos",
-      createdAt: "2025-01-12T10:00:00Z",
-      category: "Empresarial",
-      featured: false,
-      published: true,
-      content: "",
-      updatedAt: "2025-01-12T10:00:00Z"
-    },
-    {
-      id: "3",
-      title: "Seguro de Vida: Quando Contratar?",
-      excerpt: "Entenda o momento ideal para contratar um seguro de vida e como escolher a cobertura adequada para sua situação.",
-      imageUrl: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
-      author: "Ana Costa",
-      createdAt: "2025-01-10T10:00:00Z",
-      category: "Seguro de Vida",
-      featured: false,
-      published: true,
-      content: "",
-      updatedAt: "2025-01-10T10:00:00Z"
-    }
-  ];
-
-  const displayPosts = posts.length > 0 ? posts : fallbackArticles;
-  const featuredArticle = featuredPost || displayPosts.find(post => post.featured);
-  const regularArticles = displayPosts.filter(post => !post.featured);
+  const featuredArticle = featuredPost || posts.find(post => post.featured);
+  const regularArticles = posts.filter(post => !post.featured);
 
   if (isLoading) {
     return (
@@ -148,42 +104,52 @@ export default function Blog() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {regularArticles.map((article) => (
-              <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow" data-testid={`card-article-${article.id}`}>
-                <div className="relative">
-                  <img 
-                    src={article.imageUrls?.[0] || "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f"} 
-                    alt={article.title || ""}
-                    className="w-full h-48 object-cover"
-                    data-testid={`img-article-${article.id}`}
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-background/90 text-foreground px-2 py-1 rounded text-xs font-semibold">
-                      {article.category}
-                    </span>
+          {regularArticles.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {regularArticles.map((article) => (
+                <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow" data-testid={`card-article-${article.id}`}>
+                  <div className="relative">
+                    <img 
+                      src={article.imageUrls?.[0] || "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f"} 
+                      alt={article.title || ""}
+                      className="w-full h-48 object-cover"
+                      data-testid={`img-article-${article.id}`}
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-background/90 text-foreground px-2 py-1 rounded text-xs font-semibold">
+                        {article.category}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-foreground mb-3" data-testid={`text-article-title-${article.id}`}>
-                    {article.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4 text-sm" data-testid={`text-article-excerpt-${article.id}`}>
-                    {article.excerpt}
-                  </p>
-                  <div className="flex items-center text-xs text-muted-foreground mb-4">
-                    <User className="w-3 h-3 mr-1" />
-                    <span className="mr-3">{article.author}</span>
-                    <Calendar className="w-3 h-3 mr-1" />
-                    <span>{new Date(article.createdAt).toLocaleDateString('pt-BR')}</span>
-                  </div>
-                  <Button variant="outline" size="sm" className="text-primary hover:bg-primary hover:text-primary-foreground" data-testid={`button-read-article-${article.id}`}>
-                    Ler mais →
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold text-foreground mb-3" data-testid={`text-article-title-${article.id}`}>
+                      {article.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-4 text-sm" data-testid={`text-article-excerpt-${article.id}`}>
+                      {article.excerpt}
+                    </p>
+                    <div className="flex items-center text-xs text-muted-foreground mb-4">
+                      <User className="w-3 h-3 mr-1" />
+                      <span className="mr-3">{article.author}</span>
+                      <Calendar className="w-3 h-3 mr-1" />
+                      <span>{new Date(article.createdAt).toLocaleDateString('pt-BR')}</span>
+                    </div>
+                    <Button variant="outline" size="sm" className="text-primary hover:bg-primary hover:text-primary-foreground" data-testid={`button-read-article-${article.id}`}>
+                      Ler mais →
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <div className="text-6xl mb-6 opacity-50">📝</div>
+              <h3 className="text-2xl font-semibold text-foreground mb-4">Nenhum artigo publicado ainda</h3>
+              <p className="text-muted-foreground max-w-md mx-auto">
+                Em breve publicaremos conteúdo especializado sobre planos de saúde, seguros de vida e proteção financeira.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
