@@ -10,6 +10,8 @@ import Home from "@/pages/home";
 import About from "@/pages/about";
 import Blog from "@/pages/blog";
 import Contact from "@/pages/contact";
+import HealthPlans from "@/pages/health-plans";
+import LifeInsurance from "@/pages/life-insurance";
 import AdminDashboard from "@/pages/admin";
 import NotFound from "@/pages/not-found";
 
@@ -28,6 +30,8 @@ function Router() {
               <Switch>
                 <Route path="/" component={Home} />
                 <Route path="/sobre" component={About} />
+                <Route path="/planos-saude" component={HealthPlans} />
+                <Route path="/seguro-vida" component={LifeInsurance} />
                 <Route path="/blog" component={Blog} />
                 <Route path="/contato" component={Contact} />
                 <Route component={NotFound} />

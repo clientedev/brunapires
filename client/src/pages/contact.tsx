@@ -75,9 +75,12 @@ export default function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div>
-              <h2 className="text-3xl font-bold text-foreground mb-8" data-testid="text-contact-info-title">
+              <h2 className="text-3xl font-bold text-foreground mb-4" data-testid="text-contact-info-title">
                 Fale Conosco
               </h2>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                Entre em contato conosco para agendar uma consultoria gratuita e sem compromisso. Estamos prontos para ajudar você a encontrar a melhor solução em planos de saúde e seguros de vida.
+              </p>
               <div className="space-y-6 mb-8">
                 <div className="flex items-center" data-testid="contact-email">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">

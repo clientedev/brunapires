@@ -104,6 +104,111 @@ export default function About() {
         </div>
       </section>
 
+      {/* How We Work Section */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-8" data-testid="text-work-title">
+                Como Trabalhamos
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                Um processo estruturado e transparente para garantir que você tenha a melhor solução em planos de saúde e seguros de vida
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              <div className="flex gap-6 items-start" data-testid="step-analise">
+                <div className="flex-shrink-0 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+                  <span className="text-2xl font-bold text-primary">1</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">Análise Inicial Completa</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Realizamos uma entrevista detalhada para entender seu perfil, necessidades de saúde, histórico médico familiar, orçamento disponível e expectativas. Para empresas, analisamos a estrutura organizacional, perfil dos colaboradores e objetivos estratégicos.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-6 items-start" data-testid="step-pesquisa">
+                <div className="flex-shrink-0 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+                  <span className="text-2xl font-bold text-primary">2</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">Pesquisa e Comparação de Mercado</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Fazemos cotações com todas as principais operadoras do mercado (Omint, SulAmérica, Amil, Porto Seguro, Bradesco, Alice e outras). Comparamos coberturas, redes credenciadas, carências, abrangência geográfica e custos para encontrar as melhores opções para seu caso específico.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-6 items-start" data-testid="step-apresentacao">
+                <div className="flex-shrink-0 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+                  <span className="text-2xl font-bold text-primary">3</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">Apresentação de Opções</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Apresentamos as melhores alternativas de forma clara e transparente, detalhando prós e contras de cada opção, explicando toda a cobertura, condições contratuais, prazos de carência e valores. Você tem todas as informações para tomar a melhor decisão.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-6 items-start" data-testid="step-contratacao">
+                <div className="flex-shrink-0 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+                  <span className="text-2xl font-bold text-primary">4</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">Suporte na Contratação</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Cuidamos de toda a burocracia: documentação, preenchimento de formulários, negociação de condições especiais quando possível, e acompanhamento do processo de aprovação. Você não precisa se preocupar com nada.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-6 items-start" data-testid="step-acompanhamento">
+                <div className="flex-shrink-0 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+                  <span className="text-2xl font-bold text-primary">5</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">Acompanhamento Pós-Venda</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Nosso relacionamento não termina na contratação. Acompanhamos sua satisfação, esclarecemos dúvidas sobre uso do plano, auxiliamos em processos de reembolso, inclusão ou exclusão de dependentes, e estamos disponíveis para qualquer necessidade que surgir ao longo do tempo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Operadoras Parceiras Section */}
+      <section className="py-24 bg-muted">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto text-center">
+            <h2 className="text-4xl sm:text-5xl font-display font-bold text-foreground mb-8" data-testid="text-partners-title">
+              Operadoras Parceiras
+            </h2>
+            <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
+              Trabalhamos com as principais operadoras de planos de saúde do mercado brasileiro, garantindo que você tenha acesso às melhores opções disponíveis
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+              {['Omint', 'SulAmérica', 'Amil', 'Porto Seguro', 'Bradesco Saúde', 'Alice', 'Unimed', 'Hapvida/NotreDame'].map((operadora) => (
+                <div key={operadora} className="bg-background rounded-xl p-6 shadow-md border border-border flex items-center justify-center" data-testid={`partner-${operadora.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <span className="text-lg font-semibold text-foreground">{operadora}</span>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-muted-foreground">
+              E outras operadoras do mercado, sempre buscando a melhor solução para cada cliente
+            </p>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

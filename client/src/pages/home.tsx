@@ -212,10 +212,66 @@ export default function Home() {
             </h2>
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-stats-description">
-Nossa trajetória de 20 anos no mercado financeiro e desde 2017 empreendendo no mercado de seguros e planos de saúde, nos permite prestar uma consultoria dedicada que une planejamento, transparência e soluções para sua empresa e sua família.
+              Nossa trajetória de 20 anos no mercado financeiro e desde 2017 empreendendo no mercado de seguros e planos de saúde, nos permite prestar uma consultoria dedicada que une planejamento, transparência e soluções para sua empresa e sua família.
             </p>
           </div>
           
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <div className="bg-background/80 backdrop-blur rounded-2xl p-8 text-center shadow-lg border border-border" data-testid="stat-experiencia">
+              <div className="text-5xl font-display font-bold text-primary mb-2">20+</div>
+              <div className="text-muted-foreground">Anos de Experiência</div>
+              <div className="text-sm text-muted-foreground mt-2">no mercado financeiro</div>
+            </div>
+            
+            <div className="bg-background/80 backdrop-blur rounded-2xl p-8 text-center shadow-lg border border-border" data-testid="stat-especializacao">
+              <div className="text-5xl font-display font-bold text-primary mb-2">7+</div>
+              <div className="text-muted-foreground">Anos Especializados</div>
+              <div className="text-sm text-muted-foreground mt-2">em seguros e planos de saúde</div>
+            </div>
+            
+            <div className="bg-background/80 backdrop-blur rounded-2xl p-8 text-center shadow-lg border border-border" data-testid="stat-operadoras">
+              <div className="text-5xl font-display font-bold text-primary mb-2">10+</div>
+              <div className="text-muted-foreground">Operadoras Parceiras</div>
+              <div className="text-sm text-muted-foreground mt-2">todas as principais do mercado</div>
+            </div>
+            
+            <div className="bg-background/80 backdrop-blur rounded-2xl p-8 text-center shadow-lg border border-border" data-testid="stat-atendimento">
+              <div className="text-5xl font-display font-bold text-primary mb-2">100%</div>
+              <div className="text-muted-foreground">Consultoria Gratuita</div>
+              <div className="text-sm text-muted-foreground mt-2">sem custos e sem compromisso</div>
+            </div>
+          </div>
+
+          <div className="mt-16 max-w-4xl mx-auto">
+            <div className="bg-primary/5 rounded-2xl p-8 border border-primary/20">
+              <h3 className="text-2xl font-display font-bold text-foreground mb-6 text-center">
+                Nossa Metodologia Consultiva
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl font-bold text-primary">1</span>
+                  </div>
+                  <h4 className="font-semibold text-foreground mb-2">Entendimento Profundo</h4>
+                  <p className="text-sm text-muted-foreground">Analisamos suas necessidades, perfil de saúde, orçamento e expectativas</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl font-bold text-primary">2</span>
+                  </div>
+                  <h4 className="font-semibold text-foreground mb-2">Comparação Completa</h4>
+                  <p className="text-sm text-muted-foreground">Cotamos todas as operadoras e apresentamos opções com total transparência</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl font-bold text-primary">3</span>
+                  </div>
+                  <h4 className="font-semibold text-foreground mb-2">Acompanhamento Contínuo</h4>
+                  <p className="text-sm text-muted-foreground">Suporte antes, durante e após a contratação do seu plano</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
       </section>
