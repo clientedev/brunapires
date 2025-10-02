@@ -33,14 +33,14 @@ export default function Home() {
             </div>
             
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-foreground mb-8" data-testid="text-hero-title">
-              Planejamento estratégico em<br />
-              <span className="text-primary">Saúde e Seguros de Vida</span>
+              <span className="text-primary">Planos de Saúde e Seguros de Vida</span><br />
+              sob medida
             </h1>
             
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
             
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed" data-testid="text-hero-description">
-              Soluções personalizadas para pessoas e empresas, garantindo proteção e tranquilidade.
+              Consultoria para pessoas e empresas, com foco em proteção e tranquilidade.
             </p>
             
             
